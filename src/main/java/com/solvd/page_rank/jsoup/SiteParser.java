@@ -19,14 +19,21 @@ public class SiteParser {
             String name = doc.title();
             System.out.println("Name of page html: " + name);
 
-            Elements urls = mBody.getAllElements();
+//            Elements urls = mBody.getAllElements();
+//
+//            for (Element url : urls) {
+//
+//                if (!url.attr("href").isEmpty())
+//                    System.out.println("\nhref " + url.attr("href"));
+//                // needs to write to file or db
+//            }
 
-            for (Element url : urls) {
-
-                if (!url.attr("href").isEmpty())
-                    System.out.println("\nhref " + url.attr("href"));
-                // needs to write to file or db
+            Elements links = doc.select("a[href]");
+            for (Element link :links){
+                if (link.attr("href").startsWith("https:"))
+                    System.out.println("link: "+link.attr("href"));
             }
+
         } catch (IOException e) {
         }
 
