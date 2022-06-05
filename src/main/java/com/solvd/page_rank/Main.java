@@ -1,6 +1,5 @@
 package com.solvd.page_rank;
 
-import com.solvd.page_rank.jsoup.SiteParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,9 +8,5 @@ public class Main {
 
     public static void main(String[] args) {
         LOGGER.info("Test");
-
-
-        SiteParser.parseHtmlForHref(new String());
-
     }
 }
