@@ -1,0 +1,9 @@
+
+{
+  "url": "https://www.site1.com",
+  "links": [
+    {
+      "url": "https://www.site2.com"
+    }
+  ]
+}
