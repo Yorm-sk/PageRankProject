@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils;
+package com.solvd.page_rank.exceptions;
 
 public class WrongNumberException extends Exception{
     public WrongNumberException() {

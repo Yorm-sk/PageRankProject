@@ -1,5 +1,6 @@
 package com.solvd.page_rank.utils;
 
+import com.solvd.page_rank.exceptions.WrongNumberException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
