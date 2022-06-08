@@ -1,14 +1,14 @@
 package com.solvd.page_rank.jsonParser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Site {
 
     private String url;
-    private List<String> links;
+    private List<String> links = new ArrayList<>();
 
     public  Site() {}
-
 
     public String getUrl() {
         return url;

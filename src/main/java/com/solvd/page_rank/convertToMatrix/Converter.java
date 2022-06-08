@@ -12,7 +12,7 @@ public class Converter {
 
     private List<String> siteNames = new ArrayList<>();
     private  List<Site> sites = new ArrayList<>();
-    private static AMWGraph graph;
+    private AMWGraph graph;
 
     public Converter() {}
 
@@ -31,43 +31,55 @@ public class Converter {
 
     public void createGraphs() {
         AMWGraph graph = new AMWGraph(siteNames.size());
+        for(String sitename :siteNames) {
+            graph.insertVertex (sitename); // Вставляем узел
+        }
     }
 
-
+    public AMWGraph getGraph() {
+        return graph;
+    }
     public void startCompareSites() {
         sites = new ArrayList<>();
         sites = JasonReader.getListOfSites(siteNames);
 
-        createGraphs();
+        AMWGraph graph = new AMWGraph(siteNames.size());
+        for(String sitename :siteNames) {
+            graph.insertVertex (sitename); // Вставляем узел
+        }
 
         int coll = 0;
         for (Site eachSite : sites) {
-          int row = 0;
+           // System.out.println(eachSite.getUrl());
+            int row = 0;
           coll++;
            for( String eachUrl : eachSite.getLinks() ) {
+              // System.out.println(eachUrl);
              row++;
+
+             int num = 0;
                for ( Site eachCompareSite : sites) {
-
-                   if(eachSite.getUrl()!=eachCompareSite.getUrl())
-                   if (eachUrl == eachCompareSite.getUrl()) {
-
-                       graph.insertConToMatrix(coll,row);
+num++;
+                   if(eachSite.getUrl().contentEquals(eachCompareSite.getUrl())) {
                    }
-
+                   else if (eachUrl.contentEquals(eachCompareSite.getUrl())) {
+                       System.out.println(eachUrl);
+                       System.out.println(eachCompareSite.getUrl()+" "+ coll+" "+row+" "+num);
+                      graph.insertConToMatrix(coll,num);
+                   }
                }
-
            }
-
-
 
 
 
         }
 
+        for (int c = 0; c<= graph.getNumOfVertex()-1; c++) {
+            System.out.println();
+            for (int r = 0; r <= graph.getNumOfVertex()-1; r++) {
+                System.out.print(" " + graph.getElementOfMtrx(c, r));
+            }
+        }
+
     }
-
-
-
-
-
 }

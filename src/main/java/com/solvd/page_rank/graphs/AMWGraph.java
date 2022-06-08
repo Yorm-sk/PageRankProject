@@ -89,7 +89,6 @@ public class AMWGraph {
     }
 
     public int[][] getMtrx() {
-
         return matrixConn;
     }
 }

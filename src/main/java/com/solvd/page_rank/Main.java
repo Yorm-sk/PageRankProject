@@ -11,10 +11,16 @@ public class Main {
         LOGGER.info("Test");
         //TestAMWGraph.run();
 
+
         Converter con = new Converter();
         con.setSites();
-        con.createGraphs();
         con.startCompareSites();
 
+        /*for (int c = 0; c<=  con.getGraph().getNumOfVertex()-1; c++) {
+            System.out.println();
+            for (int r = 0; r <= con.getGraph().getNumOfVertex()-1; r++) {
+                System.out.print(" " + con.getGraph().getElementOfMtrx(c, r));
+            }
+        }*/
     }
 }
