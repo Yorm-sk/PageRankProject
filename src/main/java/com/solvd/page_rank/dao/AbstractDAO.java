@@ -1,5 +1,7 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.myBatis.MyBatisSQLFactory;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
