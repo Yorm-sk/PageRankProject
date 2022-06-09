@@ -1,11 +1,11 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.IPagesToRankDAO;
 import com.solvd.page_rank.models.PagesToRank;
-import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class PagesToRankDAO extends AbstractDAO<IPagesToRankDao> implements IPagesToRankDao{
+public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO {
     @Override
     public PagesToRank getEntity(int id) {
         setMapper();
@@ -49,6 +49,6 @@ public class PagesToRankDAO extends AbstractDAO<IPagesToRankDao> implements IPag
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(IPagesToRankDao.class);
+        mapper = session.getMapper(IPagesToRankDAO.class);
     }
 }
