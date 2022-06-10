@@ -10,7 +10,6 @@ public class TestConverter {
         con.startCompareSites();
         con.coutGraph();
 
-
     }
 
 
