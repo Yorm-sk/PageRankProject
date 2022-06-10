@@ -16,10 +16,11 @@ public class Converter {
 
     public Converter() {}
 
-    public Converter(String args[]) {
+    public Converter(String[] args) {
        siteNames = new ArrayList<>();
         Collections.addAll(siteNames, args);
     }
+
 
     public void setSites() {
         siteNames.add("site1");
@@ -67,10 +68,16 @@ public class Converter {
            }
         }
 
-        for (int c = 0; c<= graph.getNumOfVertex()-1; c++) {
+
+    }
+
+    public void coutGraph() {
+        getGraph().getElementOfMtrx(1,1);
+
+        for (int c = 0; c<= getGraph().getNumOfVertex()-1; c++) {
             System.out.println();
-            for (int r = 0; r <= graph.getNumOfVertex()-1; r++) {
-                System.out.print(" " + graph.getElementOfMtrx(c, r));
+            for (int r = 0; r <= getGraph().getNumOfVertex()-1; r++) {
+                System.out.print(" " + getGraph().getElementOfMtrx(c, r));
             }
         }
     }
