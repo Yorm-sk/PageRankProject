@@ -29,11 +29,12 @@ public class Converter {
         siteNames.add("site5");
     }
 
-    public void createGraphs() {
+    public AMWGraph createGraphs() {
         AMWGraph graph = new AMWGraph(siteNames.size());
         for(String sitename :siteNames) {
             graph.insertVertex (sitename); // Вставляем узел
         }
+        return graph;
     }
 
     public AMWGraph getGraph() {
@@ -43,35 +44,27 @@ public class Converter {
         sites = new ArrayList<>();
         sites = JasonReader.getListOfSites(siteNames);
 
-        AMWGraph graph = new AMWGraph(siteNames.size());
-        for(String sitename :siteNames) {
-            graph.insertVertex (sitename); // Вставляем узел
-        }
+        graph = createGraphs();
 
         int coll = 0;
         for (Site eachSite : sites) {
-           // System.out.println(eachSite.getUrl());
+
             int row = 0;
           coll++;
            for( String eachUrl : eachSite.getLinks() ) {
-              // System.out.println(eachUrl);
+
              row++;
 
              int num = 0;
                for ( Site eachCompareSite : sites) {
-num++;
+                 num++;
                    if(eachSite.getUrl().contentEquals(eachCompareSite.getUrl())) {
                    }
                    else if (eachUrl.contentEquals(eachCompareSite.getUrl())) {
-                       System.out.println(eachUrl);
-                       System.out.println(eachCompareSite.getUrl()+" "+ coll+" "+row+" "+num);
                       graph.insertConToMatrix(coll,num);
                    }
                }
            }
-
-
-
         }
 
         for (int c = 0; c<= graph.getNumOfVertex()-1; c++) {
@@ -80,6 +73,5 @@ num++;
                 System.out.print(" " + graph.getElementOfMtrx(c, r));
             }
         }
-
     }
 }

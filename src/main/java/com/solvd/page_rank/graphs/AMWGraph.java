@@ -83,9 +83,7 @@ public class AMWGraph {
     }
 
     public int getElementOfMtrx(int col, int row) {
-
-         if(matrixConn[col][row]!=1) return 0;
-          else return  matrixConn[col][row];
+        return  matrixConn[col][row];
     }
 
     public int[][] getMtrx() {
