@@ -51,4 +51,12 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
         openSession();
         mapper = session.getMapper(IUsersDAO.class);
     }
+
+    @Override
+    public Users getUserByLogin(String login) {
+        setMapper();
+        Users user = mapper.getUserByLogin(login);
+        closeSession();
+        return user;
+    }
 }
