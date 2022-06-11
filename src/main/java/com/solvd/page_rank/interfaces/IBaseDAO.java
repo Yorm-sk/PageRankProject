@@ -2,7 +2,7 @@ package com.solvd.page_rank.interfaces;
 
 import java.util.List;
 
-public interface IBaseDao<T>{
+public interface IBaseDAO<T>{
     T getEntity(long id);
 
     List<T> getAllEntity();
