@@ -1,48 +1,49 @@
 package com.solvd.page_rank.dao;
 
-import com.solvd.page_rank.models.Users;
+import com.solvd.page_rank.models.SettingsForAlgorythm;
 
 import java.util.List;
 
 public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO{
+
     @Override
-    public SettingsForAlgorythmDAO getEntity(int id) {
+    public SettingsForAlgorythm getEntity(int id) {
         setMapper();
-        SettingsForAlgorythmDAO settingForAlgorythmDAO = mapper.getEntity(id);
+        SettingsForAlgorythm settingForAlgorythm = mapper.getEntity(id);
         closeSession();
-        return settingForAlgorythmDAO;
+        return settingForAlgorythm;
     }
 
     @Override
-    public void createEntity(SettingsForAlgorythmDAO settingForAlgorythmDAO) {
+    public List<SettingsForAlgorythm> getAllEntity() {
         setMapper();
-        mapper.createEntity(settingForAlgorythmDAO);
-        session.commit();
-        closeSession();
-    }
-
-    @Override
-    public void deleteEntity(SettingsForAlgorythmDAO settingForAlgorythmDAO) {
-        setMapper();
-        mapper.deleteEntity(settingForAlgorythmDAO);
-        session.commit();
-        closeSession();
-    }
-
-    @Override
-    public void updateEntity(SettingsForAlgorythmDAO settingForAlgorythmDAO) {
-        setMapper();
-        mapper.updateEntity(settingForAlgorythmDAO);
-        session.commit();
-        closeSession();
-    }
-
-    @Override
-    public List<SettingsForAlgorythmDAO> getUsers() {
-        setMapper();
-        List<SettingsForAlgorythmDAO> settingsForAlgorythm = mapper.getSettingsForAlgorythm();
+        List<SettingsForAlgorythm> settingsForAlgorythm = mapper.getAllEntity();
         closeSession();
         return settingsForAlgorythm;
+    }
+
+    @Override
+    public void createEntity(SettingsForAlgorythm settingForAlgorythm) {
+        setMapper();
+        mapper.createEntity(settingForAlgorythm);
+        session.commit();
+        closeSession();
+    }
+
+    @Override
+    public void updateEntity(SettingsForAlgorythm settingForAlgorythm) {
+        setMapper();
+        mapper.updateEntity(settingForAlgorythm);
+        session.commit();
+        closeSession();
+    }
+
+    @Override
+    public void deleteEntity(int id) {
+        setMapper();
+        mapper.deleteEntity(id);
+        session.commit();
+        closeSession();
     }
 
     @Override

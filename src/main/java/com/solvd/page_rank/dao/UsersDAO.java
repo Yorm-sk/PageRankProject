@@ -16,17 +16,17 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     }
 
     @Override
-    public void createEntity(Users user) {
+    public List<Users> getAllEntity() {
         setMapper();
-        mapper.createEntity(user);
-        session.commit();
+        List<Users> users= mapper.getAllEntity();
         closeSession();
+        return users;
     }
 
     @Override
-    public void deleteEntity(Users user) {
+    public void createEntity(Users user) {
         setMapper();
-        mapper.deleteEntity(user);
+        mapper.createEntity(user);
         session.commit();
         closeSession();
     }
@@ -40,16 +40,25 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     }
 
     @Override
-    public List<Users> getUsers() {
+    public void deleteEntity(int id) {
         setMapper();
-        List<Users> users= mapper.getUsers();
+        mapper.deleteEntity(id);
+        session.commit();
         closeSession();
-        return users;
     }
+
 
     @Override
     public void setMapper() {
         openSession();
         mapper = session.getMapper(IUsersDAO.class);
+    }
+
+    @Override
+    public Users getUserByLogin(String login) {
+        setMapper();
+        Users user = mapper.getUserByLogin(login);
+        closeSession();
+        return user;
     }
 }
