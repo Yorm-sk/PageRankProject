@@ -11,5 +11,5 @@ public interface IBaseDAO<T>{
 
     void updateEntity(T t);
 
-    void deleteEntity(T t);
+    void deleteEntity(int id);
 }
