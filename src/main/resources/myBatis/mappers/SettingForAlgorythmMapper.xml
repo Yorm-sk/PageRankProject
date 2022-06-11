@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.page_rank.dao.SettingForAlgorythmDAO">
+    <resultMap id="settingForAlgorythmResultMap" type="SettingForAlgorythm">
+        <id property="id" column="id" javaType="int"/>
+        <result property="demping_factor" column="demping_factor"/>
+        <result property="limit_of_deflect" column="limit_of_deflect"/>
+        <association property="user" column="user_id" javaType="Users" select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="settingForAlgorythmResultMap">
+        SELECT * FROM settingforalgorythm WHERE id = #{id}
+    </select>
+
+    <delete id="deleteEntity" parameterType="SettingForAlgorythm">
+        DELETE FROM settingforalgorythm WHERE id = #{id}
+    </delete>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="SettingForAlgorythm">
+        INSERT INTO settingforalgorythm (demping_factor, limit_of_deflect, user_id)
+        VALUES (#{demping_factor}, #{limit_of_deflect}, #{user.id})
+    </insert>
+
+    <update id="updateEntity" parameterType="SettingForAlgorythm">
+        UPDATE settingforalgorythm SET demping_factor = #{demping_factor}, limit_of_deflect = #{limit_of_deflect},
+        user_id = #{user.id}
+        WHERE id = #{id}
+    </update>
+</mapper>

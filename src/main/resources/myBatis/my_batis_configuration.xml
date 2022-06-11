@@ -17,6 +17,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="_________.xml" />
+        <mapper resource="PagesMapper.xml" />
     </mappers>
 </configuration>

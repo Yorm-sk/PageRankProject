@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.page_rank.dao.PagesDAO">
+    <resultMap id="pagesResultMap" type="Pages">
+        <id property="id" column="id" javaType="int"/>
+        <result property="url" column="url"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="pagesResultMap">
+        SELECT * FROM pages WHERE id = #{id}
+    </select>
+
+    <delete id="deleteEntity" parameterType="Pages">
+        DELETE FROM pages WHERE id = #{id}
+    </delete>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="Pages">
+        INSERT INTO pages (url) VALUES (#{url})
+    </insert>
+
+    <update id="updateEntity" parameterType="Pages">
+        UPDATE pages SET url = #{url}
+        WHERE id = #{id}
+    </update>
+</mapper>

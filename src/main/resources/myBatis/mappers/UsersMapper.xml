@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.page_rank.dao.UsersDAO">
+    <resultMap id="usersResultMap" type="Users">
+        <id property="id" column="id" javaType="int"/>
+        <result property="login" column="login"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="usersResultMap">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <delete id="deleteEntity" parameterType="Users">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="Users">
+        INSERT INTO users (login) VALUES (#{login})
+    </insert>
+
+    <update id="updateEntity" parameterType="Users">
+        UPDATE users SET login = #{login}
+        WHERE id = #{id}
+    </update>
+</mapper>

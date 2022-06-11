@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.page_rank.dao.PagesToRankDAO">
+    <resultMap id="pagesToRankResultMap" type="PagesToRank">
+        <id property="id" column="id" javaType="int"/>
+        <result property="rank" column="rank"/>
+        <association property="user" column="user_id" javaType="Users" select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
+        <association property="page" column="page_id" javaType="Page" select="com.solvd.page_rank.dao.PageDao.getEntity"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="pagesToRankResultMap">
+        SELECT * FROM pagestorank WHERE id = #{id}
+    </select>
+
+    <delete id="deleteEntity" parameterType="PagesToRank">
+        DELETE FROM pagestorank WHERE id = #{id}
+    </delete>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="PagesToRank">
+        INSERT INTO pagestorank (rank, user_id, page_id) VALUES (#{rank}, #{user.id}, , #{page.id})
+    </insert>
+
+    <update id="updateEntity" parameterType="PagesToRank">
+        UPDATE pagestorank SET rank = #{rank}, user_id = #{user.id}, page_id = #{page.id}
+        WHERE id = #{id}
+    </update>
+</mapper>
