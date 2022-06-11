@@ -4,7 +4,7 @@ import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class UsersDAO extends AbstractDAO<IUsersDao> implements IUsersDao{
+public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
 
     @Override
     public Users getEntity(int id) {
@@ -49,6 +49,6 @@ public class UsersDAO extends AbstractDAO<IUsersDao> implements IUsersDao{
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(IUsersDao.class);
+        mapper = session.getMapper(IUsersDAO.class);
     }
 }

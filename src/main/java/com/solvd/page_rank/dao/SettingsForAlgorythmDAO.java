@@ -4,7 +4,7 @@ import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDao> implements ISettingsForAlgorythmDao{
+public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO{
     @Override
     public SettingsForAlgorythmDAO getEntity(int id) {
         setMapper();
@@ -48,6 +48,6 @@ public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDa
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(ISettingsForAlgorythmDao.class);
+        mapper = session.getMapper(ISettingsForAlgorythmDAO.class);
     }
 }
