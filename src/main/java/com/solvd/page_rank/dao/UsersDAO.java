@@ -1,5 +1,6 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.IUsersDAO;
 import com.solvd.page_rank.models.Users;
 
 import java.util.List;
