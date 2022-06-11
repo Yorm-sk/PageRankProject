@@ -1,4 +1,4 @@
-package com.solvd.page_rank.jsonParser;
+package com.solvd.page_rank.utils.jsonParser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

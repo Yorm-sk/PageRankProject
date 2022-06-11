@@ -1,8 +1,8 @@
-package com.solvd.page_rank.convertToMatrix;
+package com.solvd.page_rank.utils.convertToMatrix;
 
-import com.solvd.page_rank.graphs.AMWGraph;
-import com.solvd.page_rank.jsonParser.JasonReader;
-import com.solvd.page_rank.jsonParser.Site;
+import com.solvd.page_rank.utils.graphs.AMWGraph;
+import com.solvd.page_rank.utils.jsonParser.JasonReader;
+import com.solvd.page_rank.utils.jsonParser.Site;
 
 import java.util.ArrayList;
 import java.util.Collections;

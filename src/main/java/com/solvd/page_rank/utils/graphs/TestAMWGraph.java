@@ -1,4 +1,4 @@
-package com.solvd.page_rank.graphs;
+package com.solvd.page_rank.utils.graphs;
 
 
 

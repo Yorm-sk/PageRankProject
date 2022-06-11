@@ -1,4 +1,4 @@
-package com.solvd.page_rank.convertToMatrix;
+package com.solvd.page_rank.utils.convertToMatrix;
 
 public class TestConverter {
 
