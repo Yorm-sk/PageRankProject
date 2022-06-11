@@ -1,5 +1,6 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.IRelationsBetweenPagesDAO;
 import com.solvd.page_rank.models.PagesToRank;
 import com.solvd.page_rank.models.RelationsBetweenPages;
 import com.solvd.page_rank.models.Users;
@@ -7,8 +8,9 @@ import com.solvd.page_rank.models.Users;
 import java.util.List;
 
 public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPagesDAO> implements IRelationsBetweenPagesDAO{
+
     @Override
-    public RelationsBetweenPages getEntity(int id) {
+    public RelationsBetweenPages getEntity(long id) {
         setMapper();
         RelationsBetweenPages relationBetweenPages = mapper.getEntity(id);
         closeSession();
@@ -16,17 +18,17 @@ public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPages
     }
 
     @Override
-    public void createEntity(RelationsBetweenPages relationBetweenPages) {
+    public List<RelationsBetweenPages> getAllEntity() {
         setMapper();
-        mapper.createEntity(relationBetweenPages);
-        session.commit();
+        List<RelationsBetweenPages> relationsBetweenPages= mapper.getAllEntity();
         closeSession();
+        return relationsBetweenPages;
     }
 
     @Override
-    public void deleteEntity(RelationsBetweenPages relationBetweenPages) {
+    public void createEntity(RelationsBetweenPages relationBetweenPages) {
         setMapper();
-        mapper.deleteEntity(relationBetweenPages);
+        mapper.createEntity(relationBetweenPages);
         session.commit();
         closeSession();
     }
@@ -40,11 +42,11 @@ public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPages
     }
 
     @Override
-    public List<RelationsBetweenPages> getPagesToRank() {
+    public void deleteEntity(long id) {
         setMapper();
-        List<RelationsBetweenPages> relationsBetweenPages= mapper.getPagesToRank();
+        mapper.deleteEntity(id);
+        session.commit();
         closeSession();
-        return relationsBetweenPages;
     }
 
     @Override

@@ -1,13 +1,15 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.IPagesDAO;
 import com.solvd.page_rank.models.Pages;
 import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
 public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
+
     @Override
-    public Pages getEntity(int id) {
+    public Pages getEntity(long id) {
         setMapper();
         Pages page = mapper.getEntity(id);
         closeSession();
@@ -15,17 +17,17 @@ public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
     }
 
     @Override
-    public void createEntity(Pages page) {
+    public List<Pages> getAllEntity() {
         setMapper();
-        mapper.createEntity(page);
-        session.commit();
+        List<Pages> pages= mapper.getAllEntity();
         closeSession();
+        return pages;
     }
 
     @Override
-    public void deleteEntity(Users user) {
+    public void createEntity(Pages page) {
         setMapper();
-        mapper.deleteEntity(user);
+        mapper.createEntity(page);
         session.commit();
         closeSession();
     }
@@ -39,11 +41,11 @@ public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
     }
 
     @Override
-    public List<Pages> getUsers() {
+    public void deleteEntity(long id) {
         setMapper();
-        List<Pages> pages= mapper.getPages();
+        mapper.deleteEntity(id);
+        session.commit();
         closeSession();
-        return pages;
     }
 
     @Override

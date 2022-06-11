@@ -5,13 +5,10 @@ import com.solvd.page_rank.models.PagesToRank;
 
 import java.util.List;
 
-<<<<<<< HEAD
 public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO{
-=======
-public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO {
->>>>>>> 19b2952f92333f14663a61453da8cbb639db8b1f
+
     @Override
-    public PagesToRank getEntity(int id) {
+    public PagesToRank getEntity(long id) {
         setMapper();
         PagesToRank pageToRank= mapper.getEntity(id);
         closeSession();
@@ -19,17 +16,17 @@ public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPag
     }
 
     @Override
-    public void createEntity(PagesToRank pageToRank) {
+    public List<PagesToRank> getAllEntity() {
         setMapper();
-        mapper.createEntity(pageToRank);
-        session.commit();
+        List<PagesToRank> pagesToRanks= mapper.getAllEntity();
         closeSession();
+        return pagesToRanks;
     }
 
     @Override
-    public void deleteEntity(PagesToRank pageToRank) {
+    public void createEntity(PagesToRank pageToRank) {
         setMapper();
-        mapper.deleteEntity(pageToRank);
+        mapper.createEntity(pageToRank);
         session.commit();
         closeSession();
     }
@@ -43,11 +40,11 @@ public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPag
     }
 
     @Override
-    public List<PagesToRank> getPagesToRank() {
+    public void deleteEntity(long id) {
         setMapper();
-        List<PagesToRank> pagesToRanks= mapper.getPagesToRank();
+        mapper.deleteEntity(id);
+        session.commit();
         closeSession();
-        return pagesToRanks;
     }
 
     @Override
