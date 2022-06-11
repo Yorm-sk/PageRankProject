@@ -72,8 +72,6 @@ public class Converter {
     }
 
     public void coutGraph() {
-        getGraph().getElementOfMtrx(1,1);
-
         for (int c = 0; c<= getGraph().getNumOfVertex()-1; c++) {
             System.out.println();
             for (int r = 0; r <= getGraph().getNumOfVertex()-1; r++) {
