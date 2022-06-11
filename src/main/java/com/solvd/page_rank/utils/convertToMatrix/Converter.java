@@ -20,7 +20,9 @@ public class Converter {
        siteNames = new ArrayList<>();
         Collections.addAll(siteNames, args);
     }
-
+    public Converter(ArrayList<String> pagesList) {
+        siteNames = pagesList;
+    }
 
     public void setSites() {
         siteNames.add("site1");
