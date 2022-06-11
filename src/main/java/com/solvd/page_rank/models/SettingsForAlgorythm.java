@@ -1,21 +1,21 @@
 package com.solvd.page_rank.models;
 
-public class SettingForAlgorythm {
+public class SettingsForAlgorythm {
     private int id;
     private double dempingFactor;
     private double limitOfDeflect;
     private Users user;
 
-    public SettingForAlgorythm() {
+    public SettingsForAlgorythm() {
     }
 
-    public SettingForAlgorythm(double dempingFactor, double limitOfDeflect, Users user) {
+    public SettingsForAlgorythm(double dempingFactor, double limitOfDeflect, Users user) {
         this.dempingFactor = dempingFactor;
         this.limitOfDeflect = limitOfDeflect;
         this.user = user;
     }
 
-    public SettingForAlgorythm(int id, double dempingFactor, double limitOfDeflect, Users user) {
+    public SettingsForAlgorythm(int id, double dempingFactor, double limitOfDeflect, Users user) {
         this.id = id;
         this.dempingFactor = dempingFactor;
         this.limitOfDeflect = limitOfDeflect;
