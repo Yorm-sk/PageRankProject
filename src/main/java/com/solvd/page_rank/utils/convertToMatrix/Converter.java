@@ -33,7 +33,7 @@ public class Converter {
     public AMWGraph createGraphs() {
         AMWGraph graph = new AMWGraph(siteNames.size());
         for(String sitename :siteNames) {
-            graph.insertVertex (sitename); // Вставляем узел
+            graph.insertVertex (sitename); // add node
         }
         return graph;
     }
