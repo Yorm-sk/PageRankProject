@@ -3,7 +3,7 @@ package com.solvd.page_rank.interfaces;
 import java.util.List;
 
 public interface IBaseDAO<T>{
-    T getEntity(long id);
+    T getEntity(int id);
 
     List<T> getAllEntity();
 
@@ -11,5 +11,5 @@ public interface IBaseDAO<T>{
 
     void updateEntity(T t);
 
-    void deleteEntity(long id);
+    void deleteEntity(int id);
 }
