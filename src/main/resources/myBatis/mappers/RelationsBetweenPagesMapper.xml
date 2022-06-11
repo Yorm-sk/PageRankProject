@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solvd.page_rank.dao.RelationsBetweenPagesDAO">
-    <resultMap id="relationsBetweenPagesResultMap" type="RelationsBetweenPages">
+    <resultMap id="relationsBetweenPagesResultMap" type="com.solvd.page_rank.models.RelationsBetweenPages">
         <id property="id" column="id" javaType="int"/>
-        <association property="pageToRank1" column="pageToRank_id1" javaType="PagesToRank"
+        <association property="pageToRank1" column="pageToRank_id1" javaType="com.solvd.page_rank.models.PagesToRank"
                      select="com.solvd.page_rank.dao.PagesToRankDao.getEntity"/>
-        <association property="pageToRank2" column="pageToRank_id2" javaType="PagesToRank"
+        <association property="pageToRank2" column="pageToRank_id2" javaType="com.solvd.page_rank.models.PagesToRank"
                      select="com.solvd.page_rank.dao.PagesToRankDao.getEntity"/>
     </resultMap>
 
@@ -15,15 +15,15 @@
         SELECT * FROM relationsbetweenpages WHERE id = #{id}
     </select>
 
-    <delete id="deleteEntity" parameterType="RelationsBetweenPages">
+    <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.RelationsBetweenPages">
         DELETE FROM relationsbetweenpages WHERE id = #{id}
     </delete>
 
-    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="RelationsBetweenPages">
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.RelationsBetweenPages">
         INSERT INTO relationsbetweenpages (pageToRank_id1, pageToRank_id2) VALUES (#{pageToRank1.id}, #{pageToRank2.id})
     </insert>
 
-    <update id="updateEntity" parameterType="RelationsBetweenPages">
+    <update id="updateEntity" parameterType="com.solvd.page_rank.models.RelationsBetweenPages">
         UPDATE relationsbetweenpages SET pageToRank_id1 = #{pageToRank1.id}, pageToRank_id2 = #{pageToRank2.id}
         WHERE id = #{id}
     </update>

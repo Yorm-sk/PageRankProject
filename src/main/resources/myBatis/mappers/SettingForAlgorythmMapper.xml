@@ -3,27 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solvd.page_rank.dao.SettingForAlgorythmDAO">
-    <resultMap id="settingForAlgorythmResultMap" type="SettingForAlgorythm">
+    <resultMap id="settingForAlgorythmResultMap" type="com.solvd.page_rank.models.SettingForAlgorythm">
         <id property="id" column="id" javaType="int"/>
         <result property="demping_factor" column="demping_factor"/>
         <result property="limit_of_deflect" column="limit_of_deflect"/>
-        <association property="user" column="user_id" javaType="Users" select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
+        <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
+                     select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
     </resultMap>
 
     <select id="getEntity" resultMap="settingForAlgorythmResultMap">
         SELECT * FROM settingforalgorythm WHERE id = #{id}
     </select>
 
-    <delete id="deleteEntity" parameterType="SettingForAlgorythm">
+    <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.SettingForAlgorythm">
         DELETE FROM settingforalgorythm WHERE id = #{id}
     </delete>
 
-    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="SettingForAlgorythm">
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.SettingForAlgorythm">
         INSERT INTO settingforalgorythm (demping_factor, limit_of_deflect, user_id)
         VALUES (#{demping_factor}, #{limit_of_deflect}, #{user.id})
     </insert>
 
-    <update id="updateEntity" parameterType="SettingForAlgorythm">
+    <update id="updateEntity" parameterType="com.solvd.page_rank.models.SettingForAlgorythm">
         UPDATE settingforalgorythm SET demping_factor = #{demping_factor}, limit_of_deflect = #{limit_of_deflect},
         user_id = #{user.id}
         WHERE id = #{id}

@@ -18,5 +18,9 @@
     </environments>
     <mappers>
         <mapper resource="PagesMapper.xml" />
+        <mapper resource="PagesToRankMapper.xml" />
+        <mapper resource="RelationsBetweenPagesMapper.xml" />
+        <mapper resource="SettingForAlgorythmMapper.xml" />
+        <mapper resource="UsersMapper.xml" />
     </mappers>
 </configuration>
