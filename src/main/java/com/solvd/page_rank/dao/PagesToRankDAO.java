@@ -5,7 +5,9 @@ import com.solvd.page_rank.models.PagesToRank;
 
 import java.util.List;
 
-public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO {
+
+public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO{
+  
     @Override
     public PagesToRank getEntity(int id) {
         setMapper();

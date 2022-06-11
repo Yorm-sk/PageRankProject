@@ -5,7 +5,7 @@ import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class PagesDAO extends AbstractDAO<IPagesDao> implements IPagesDao{
+public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
     @Override
     public Pages getEntity(int id) {
         setMapper();
@@ -49,6 +49,6 @@ public class PagesDAO extends AbstractDAO<IPagesDao> implements IPagesDao{
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(IPagesDao.class);
+        mapper = session.getMapper(IPagesDAO.class);
     }
 }

@@ -6,7 +6,7 @@ import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPagesDao> implements IRelationsBetweenPagesDao{
+public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPagesDAO> implements IRelationsBetweenPagesDAO{
     @Override
     public RelationsBetweenPages getEntity(int id) {
         setMapper();
@@ -50,6 +50,6 @@ public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPages
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(IRelationsBetweenPagesDao.class);
+        mapper = session.getMapper(IRelationsBetweenPagesDAO.class);
     }
 }
