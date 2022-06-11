@@ -1,10 +1,11 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.IUsersDAO;
 import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
-public class UsersDAO extends AbstractDAO<IUsersDao> implements IUsersDao{
+public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
 
     @Override
     public Users getEntity(int id) {
