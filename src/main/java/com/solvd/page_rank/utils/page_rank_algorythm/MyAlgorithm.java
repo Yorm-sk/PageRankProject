@@ -23,11 +23,13 @@ public class MyAlgorithm {
         double dampingFactor = 0.85;
 
         double limitOfDefect = 0.09; // needed to reduce deflection on each iteration
+        previousPageRank = Arrays.copyOf(pageRank, pageRank.length);
+        iteratePageRank(dampingFactor, sitesQuantity);
         for (int i = 0; i < pageRank.length; i++) {
-            previousPageRank = Arrays.copyOf(pageRank, pageRank.length);
-            iteratePageRank(dampingFactor, sitesQuantity);
-            if (Math.abs(pageRank[i] - previousPageRank[i]) > limitOfDefect)
+            if (Math.abs(pageRank[i] - previousPageRank[i]) > limitOfDefect) {
+                previousPageRank = Arrays.copyOf(pageRank, pageRank.length);
                 iteratePageRank(dampingFactor, sitesQuantity);
+            }
         }
     }
 
