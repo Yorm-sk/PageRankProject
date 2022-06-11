@@ -1,30 +1,29 @@
 package com.solvd.page_rank.dao;
 
-import com.solvd.page_rank.interfaces.ISettingForAlgorythmDAO;
-import com.solvd.page_rank.models.SettingForAlgorythm;
+import com.solvd.page_rank.models.SettingsForAlgorythm;
 
 import java.util.List;
 
-public class SettingForAlgorythmDAO extends AbstractDAO<ISettingForAlgorythmDAO> implements ISettingForAlgorythmDAO{
+public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO{
 
     @Override
-    public SettingForAlgorythm getEntity(long id) {
+    public SettingsForAlgorythm getEntity(int id) {
         setMapper();
-        SettingForAlgorythm settingForAlgorythm = mapper.getEntity(id);
+        SettingsForAlgorythm settingForAlgorythm = mapper.getEntity(id);
         closeSession();
         return settingForAlgorythm;
     }
 
     @Override
-    public List<SettingForAlgorythm> getAllEntity() {
+    public List<SettingsForAlgorythm> getAllEntity() {
         setMapper();
-        List<SettingForAlgorythm> settingsForAlgorythm = mapper.getAllEntity();
+        List<SettingsForAlgorythm> settingsForAlgorythm = mapper.getAllEntity();
         closeSession();
         return settingsForAlgorythm;
     }
 
     @Override
-    public void createEntity(SettingForAlgorythm settingForAlgorythm) {
+    public void createEntity(SettingsForAlgorythm settingForAlgorythm) {
         setMapper();
         mapper.createEntity(settingForAlgorythm);
         session.commit();
@@ -32,7 +31,7 @@ public class SettingForAlgorythmDAO extends AbstractDAO<ISettingForAlgorythmDAO>
     }
 
     @Override
-    public void updateEntity(SettingForAlgorythm settingForAlgorythm) {
+    public void updateEntity(SettingsForAlgorythm settingForAlgorythm) {
         setMapper();
         mapper.updateEntity(settingForAlgorythm);
         session.commit();
@@ -40,7 +39,7 @@ public class SettingForAlgorythmDAO extends AbstractDAO<ISettingForAlgorythmDAO>
     }
 
     @Override
-    public void deleteEntity(long id) {
+    public void deleteEntity(int id) {
         setMapper();
         mapper.deleteEntity(id);
         session.commit();
@@ -50,6 +49,6 @@ public class SettingForAlgorythmDAO extends AbstractDAO<ISettingForAlgorythmDAO>
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(ISettingForAlgorythmDAO.class);
+        mapper = session.getMapper(ISettingsForAlgorythmDAO.class);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPagesDAO> implements IRelationsBetweenPagesDAO{
 
     @Override
-    public RelationsBetweenPages getEntity(long id) {
+    public RelationsBetweenPages getEntity(int id) {
         setMapper();
         RelationsBetweenPages relationBetweenPages = mapper.getEntity(id);
         closeSession();
@@ -42,7 +42,7 @@ public class RelationsBetweenPagesDAO extends AbstractDAO<IRelationsBetweenPages
     }
 
     @Override
-    public void deleteEntity(long id) {
+    public void deleteEntity(int id) {
         setMapper();
         mapper.deleteEntity(id);
         session.commit();

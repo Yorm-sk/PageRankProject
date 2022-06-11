@@ -8,7 +8,7 @@ import java.util.List;
 public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPagesToRankDAO{
 
     @Override
-    public PagesToRank getEntity(long id) {
+    public PagesToRank getEntity(int id) {
         setMapper();
         PagesToRank pageToRank= mapper.getEntity(id);
         closeSession();
@@ -40,7 +40,7 @@ public class PagesToRankDAO extends AbstractDAO<IPagesToRankDAO> implements IPag
     }
 
     @Override
-    public void deleteEntity(long id) {
+    public void deleteEntity(int id) {
         setMapper();
         mapper.deleteEntity(id);
         session.commit();

@@ -8,7 +8,7 @@ import java.util.List;
 public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
 
     @Override
-    public Users getEntity(long id) {
+    public Users getEntity(int id) {
         setMapper();
         Users user = mapper.getEntity(id);
         closeSession();
@@ -40,7 +40,7 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     }
 
     @Override
-    public void deleteEntity(long id) {
+    public void deleteEntity(int id) {
         setMapper();
         mapper.deleteEntity(id);
         session.commit();

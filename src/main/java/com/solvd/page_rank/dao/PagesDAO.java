@@ -9,7 +9,7 @@ import java.util.List;
 public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
 
     @Override
-    public Pages getEntity(long id) {
+    public Pages getEntity(int id) {
         setMapper();
         Pages page = mapper.getEntity(id);
         closeSession();
@@ -41,7 +41,7 @@ public class PagesDAO extends AbstractDAO<IPagesDAO> implements IPagesDAO{
     }
 
     @Override
-    public void deleteEntity(long id) {
+    public void deleteEntity(int id) {
         setMapper();
         mapper.deleteEntity(id);
         session.commit();
