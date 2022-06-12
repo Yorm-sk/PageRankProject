@@ -26,7 +26,7 @@ public class WorkWithUrlsMenu {
                         "3 - previous menu");
                 int choice = scanner.nextInt();
                 if (choice < 1 || choice > 3) throw new WrongNumberException();
-                switch (choice){
+                switch (choice) {
                     case 1:
                         //TODO:make function to add sites
                         break;
@@ -38,18 +38,18 @@ public class WorkWithUrlsMenu {
                         break;
                 }
                 if (choice == 3) break;
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
-            } catch (WrongNumberException e){
+            } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
         }
     }
 
-    private void removeSite(Scanner scanner){
+    private void removeSite(Scanner scanner) {
         PagesDAO dao = new PagesDAO();
         List<Pages> pages = dao.getAllEntity();
-        while (true){
+        while (true) {
             try {
                 LOGGER.info("Chose site you want to remove (if uou don`t want to enter -1):");
                 pages.forEach(page -> LOGGER.info(page.getId() + ": " + page.getUrl()));
@@ -60,11 +60,11 @@ public class WorkWithUrlsMenu {
                     LOGGER.info("Deleted site with id - " + choice);
                     dao.deleteEntity(choice);
                 }
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
-            }  catch (WrongNumberException e) {
-            LOGGER.warn(e.getMessage());
-        }
+            } catch (WrongNumberException e) {
+                LOGGER.warn(e.getMessage());
+            }
         }
     }
 }

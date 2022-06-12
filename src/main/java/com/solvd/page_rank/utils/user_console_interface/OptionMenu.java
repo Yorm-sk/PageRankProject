@@ -15,8 +15,8 @@ public class OptionMenu {
         showMenu(scanner, user);
     }
 
-    private void showMenu(Scanner scanner, Users user){
-        while (true){
+    private void showMenu(Scanner scanner, Users user) {
+        while (true) {
             try {
                 LOGGER.info("\nWelcome to option menu, " + user.getLogin() + ", choose option\n" +
                         "1 - Work with urls\n" +
@@ -26,7 +26,7 @@ public class OptionMenu {
                         "5 - Log out");
                 int choice = scanner.nextInt();
                 if (choice < 1 || choice > 5) throw new WrongNumberException();
-                switch (choice){
+                switch (choice) {
                     case 1:
                         new WorkWithUrlsMenu(scanner);
                         break;
@@ -42,10 +42,10 @@ public class OptionMenu {
                         LOGGER.info("Logging out...");
                         break;
                 }
-                break;
-            } catch (InputMismatchException e){
+                if (choice == 5) break;
+            } catch (InputMismatchException e) {
                 LOGGER.warn("You entered not a number");
-            } catch (WrongNumberException e){
+            } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
         }
