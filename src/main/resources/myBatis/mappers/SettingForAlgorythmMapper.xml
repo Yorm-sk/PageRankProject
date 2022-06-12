@@ -29,4 +29,8 @@
         user_id = #{user.id}
         WHERE id = #{id}
     </update>
+
+    <select id="getSettingsByUserID" resultMap="settingForAlgorythmResultMap">
+        SELECT * FROM settingforalgorythm WHERE user_id = #{userId}
+    </select>
 </mapper>

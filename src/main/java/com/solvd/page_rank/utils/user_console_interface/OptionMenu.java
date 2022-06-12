@@ -19,7 +19,7 @@ public class OptionMenu {
         while (true){
             try {
                 LOGGER.info("\nWelcome to option menu, " + user.getLogin() + ", choose option\n" +
-                        "1 - Work with url\n" +
+                        "1 - Work with urls\n" +
                         "2 - Choose sites to rank\n" +
                         "3 - Rank sites\n" +
                         "4 - Set up setting (change damping level(default - 0.85), limit of deflect (default - 0.09))\n" +
@@ -31,13 +31,13 @@ public class OptionMenu {
                         //TODO:open menu to work with urls
                         break;
                     case 2:
-                        //TODO:open menu to choose sites
+                        new PagesToChooseMenu(scanner, user);
                         break;
                     case 3:
                         //TODO:start algorithm
                         break;
                     case 4:
-                        //TODO:menu to work with settings
+                        new WorkWithSettingMenu(scanner, user.getId());
                     case 5:
                         LOGGER.info("Logging out...");
                         break;

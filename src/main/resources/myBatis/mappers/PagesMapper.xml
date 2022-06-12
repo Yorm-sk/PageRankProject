@@ -24,4 +24,8 @@
         UPDATE pages SET url = #{url}
         WHERE id = #{id}
     </update>
+
+    <select id="getAllEntity" resultMap="pagesResultMap">
+        SELECT * FROM pages
+    </select>
 </mapper>

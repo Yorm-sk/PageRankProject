@@ -52,4 +52,12 @@ public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDA
         openSession();
         mapper = session.getMapper(ISettingsForAlgorythmDAO.class);
     }
+
+    @Override
+    public SettingsForAlgorythm getSettingsByUserID(int userId) {
+        setMapper();
+        SettingsForAlgorythm settings = mapper.getSettingsByUserID(userId);
+        closeSession();
+        return settings;
+    }
 }
