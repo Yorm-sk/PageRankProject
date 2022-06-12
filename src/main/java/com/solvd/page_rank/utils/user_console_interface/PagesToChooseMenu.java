@@ -34,10 +34,10 @@ public class PagesToChooseMenu {
                 if (choice == -1) {
                     LOGGER.info("Your list is ready");
                     break;
-                }
-                else chosenOne.add(pages.get(choice));
+                } else chosenOne.add(pages.get(choice));
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
+                scanner.next();
             } catch (WrongNumberException | NotEnoughPagesToRankException e) {
                 LOGGER.warn(e.getMessage());
             }

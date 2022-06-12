@@ -61,7 +61,7 @@ public class WorkWithSettingMenu {
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not a double");
                 scanner.next();
-            } catch (WrongNumberException e){
+            } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
         }
@@ -83,7 +83,7 @@ public class WorkWithSettingMenu {
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not a double");
                 scanner.next();
-            } catch (WrongNumberException e){
+            } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
         }

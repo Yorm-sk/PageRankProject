@@ -8,7 +8,7 @@
         <result property="dempingFactor" column="demping_factor"/>
         <result property="limitOfDeflect" column="limit_of_deflect"/>
         <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
-                     select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
+                     select="com.solvd.page_rank.interfaces.IUsersDAO.getEntity"/>
     </resultMap>
 
     <select id="getEntity" resultMap="settingForAlgorythmResultMap">
@@ -31,6 +31,6 @@
     </update>
 
     <select id="getSettingsByUserID" resultMap="settingForAlgorythmResultMap">
-        SELECT * FROM settingforalgorythm WHERE user_id = #{userId}
+        SELECT * FROM settingforalgorythm WHERE user_id = #{user.id}
     </select>
 </mapper>
