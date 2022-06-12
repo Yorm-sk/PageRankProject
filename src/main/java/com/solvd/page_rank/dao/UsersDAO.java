@@ -57,9 +57,9 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     }
 
     @Override
-    public List<PagesToRank> getAllPages(int user_id) {
+    public List<PagesToRank> getPagesToRank(int user_id) {
         setMapper();
-        List<PagesToRank> pagesToRanks = mapper.getAllPages(user_id);
+        List<PagesToRank> pagesToRanks = mapper.getPagesToRank(user_id);
         closeSession();
         return pagesToRanks;
     }

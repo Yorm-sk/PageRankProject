@@ -63,10 +63,11 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Pages{" +
-                "id=" + id + "\n" +
-                "login=" + login + '\'' + "\n" +
-                "password=" + password +
+        return "User {" +
+                "id= " + getId() + "\n" +
+                "login= " + getLogin() + '\'' + "\n" +
+                "password= " + getPassword() +
+                "pages to ranks= " + getPagesToRanks() + "\n" +
                 '}';
     }
 }
