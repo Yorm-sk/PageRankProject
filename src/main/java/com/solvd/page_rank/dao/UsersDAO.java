@@ -48,13 +48,6 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
         closeSession();
     }
 
-
-    @Override
-    public void setMapper() {
-        openSession();
-        mapper = session.getMapper(IUsersDAO.class);
-    }
-
     @Override
     public Users getUserByLogin(String login) {
         setMapper();
@@ -69,5 +62,11 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
         List<PagesToRank> pagesToRanks = mapper.getAllPages(user_id);
         closeSession();
         return pagesToRanks;
+    }
+
+    @Override
+    public void setMapper() {
+        openSession();
+        mapper = session.getMapper(IUsersDAO.class);
     }
 }
