@@ -1,10 +1,11 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.ISettingForAlgorythmDAO;
 import com.solvd.page_rank.models.SettingsForAlgorythm;
 
 import java.util.List;
 
-public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO{
+public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingForAlgorythmDAO> implements ISettingForAlgorythmDAO{
 
     @Override
     public SettingsForAlgorythm getEntity(int id) {
@@ -49,6 +50,6 @@ public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDA
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(ISettingsForAlgorythmDAO.class);
+        mapper = session.getMapper(ISettingForAlgorythmDAO.class);
     }
 }
