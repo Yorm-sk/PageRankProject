@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class MainMenu {
     private static final Logger LOGGER = LogManager.getLogger(MainMenu.class);
 

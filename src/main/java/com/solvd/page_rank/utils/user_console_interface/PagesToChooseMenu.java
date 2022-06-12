@@ -5,6 +5,7 @@ import com.solvd.page_rank.exceptions.NotEnoughPagesToRankException;
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import com.solvd.page_rank.models.Pages;
 import com.solvd.page_rank.models.Users;
+import com.solvd.page_rank.utils.convertToMatrix.Converter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class PagesToChooseMenu {
     private static final Logger LOGGER = LogManager.getLogger(PagesToChooseMenu.class);
@@ -43,5 +45,23 @@ public class PagesToChooseMenu {
             }
         }
         //TODO:parse chosenOne to PagesToRank and insert them into tables
+        List<String> usersPagesUrls;
+        usersPagesUrls = chosenOne.stream().map(Pages::getUrl).collect(Collectors.toList());
+        Converter converter = new Converter(usersPagesUrls);
+        converter.startCompareSites();    // needs to have .json files
+        converter.getGraph().getMtrx();   // return int[][] - connection table of Pages and links
+/*            
+        MyAlgorithm obj = new MyAlgorithm();
+        obj.setRelations (converter.getGraph().getMtrx());
+        obj.calculatePageRank();
+        List<PagesToRank> chosenPagesToRank = obj.getListPagesToRank();
+
+        PagesToRankDAO pagesToRankDAO = new PagesToRankDAO();
+
+        for (PagesToRank onePageToRank : chosenPagesToRank) {
+            pagesToRankDAO.createEntity(onePageToRank);
+        }
+*/
+
     }
 }
