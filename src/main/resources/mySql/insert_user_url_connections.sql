@@ -1,25 +1,17 @@
-USE pagerank;
+INSERT INTO `pagerankdb`.`users`
+(`login`, `password`)
+VALUES("admin", "password"), ("user", "123456"), ("guest", "guest");
 
-INSERT INTO pagerank.user (name,pass)
+INSERT INTO `pagerankdb`.`pagestorank`
+(`user_id`, `page_id`, `rank`)
 VALUES
-( "Dima", "Dimapass"),
-( "Alexandra", "Alexandrapass"),
-( "Marina", "Marinapass"),
-( "Andrey", "Andreypass");
+(1, 2, 0.5), (1, 1, 0.64), (2, 3, 0.73);
 
-
-INSERT INTO pagerank.url (url,user_id)
+INSERT INTO `pagerankdb`.`pages`
+(`url`, `user_id`)
 VALUES
-("http://www.google.com/", "1"),
-("https://www.youtube.com/", "2"),
-("https://music.youtube.com/", "3"),
-("https://ads.google.com/", "4");
+("http://www.google.com/", 1), ("https://www.youtube.com/", 2), ("https://music.youtube.com/", 3);
 
-INSERT INTO `pagerank`.`connections`
-(`V1_id`, `V2_id1`)
-VALUES
-(1,2),
-(2,3),
-(3,4),
-(4,1),
-(4,2);
+INSERT INTO `pagerankdb`.`relationsbetweenpages`
+(`pageToRank_id1`, `pageToRank_id2`)
+VALUES (1, 2), (2, 3), (1, 3);
