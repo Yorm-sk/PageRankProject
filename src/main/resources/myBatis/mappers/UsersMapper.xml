@@ -7,10 +7,16 @@
         <id property="id" column="id" javaType="int"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
+        <collection property="pagesToRanks" javaType="ArrayList" column="id"
+                    ofType="com.solvd.page_rank.models.PagesToRank" select="selectPagesToRanks"/>
     </resultMap>
 
     <select id="getEntity" resultMap="usersResultMap">
         SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="selectPagesToRanks" resultMap="usersResultMap">
+        SELECT * FROM pagestorank WHERE user_id = #{id}
     </select>
 
     <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.Users">
