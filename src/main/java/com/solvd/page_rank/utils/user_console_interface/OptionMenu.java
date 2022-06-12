@@ -28,7 +28,7 @@ public class OptionMenu {
                 if (choice < 1 || choice > 5) throw new WrongNumberException();
                 switch (choice){
                     case 1:
-                        //TODO:open menu to work with urls
+                        new WorkWithUrlsMenu(scanner);
                         break;
                     case 2:
                         new PagesToChooseMenu(scanner, user);
