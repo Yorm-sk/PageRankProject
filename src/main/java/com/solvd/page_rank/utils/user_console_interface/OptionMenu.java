@@ -22,7 +22,7 @@ public class OptionMenu {
                         "1 - Work with url\n" +
                         "2 - Choose sites to rank\n" +
                         "3 - Rank sites\n" +
-                        "4 - Set up setting (change damping level(default - 0.85), limit of deflect (default - 0.09))" +
+                        "4 - Set up setting (change damping level(default - 0.85), limit of deflect (default - 0.09))\n" +
                         "5 - Log out");
                 int choice = scanner.nextInt();
                 if (choice < 1 || choice > 5) throw new WrongNumberException();

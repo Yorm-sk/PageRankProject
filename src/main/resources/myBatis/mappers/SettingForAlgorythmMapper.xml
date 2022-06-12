@@ -5,8 +5,8 @@
 <mapper namespace="com.solvd.page_rank.interfaces.ISettingsForAlgorythmDAO">
     <resultMap id="settingForAlgorythmResultMap" type="com.solvd.page_rank.models.SettingsForAlgorythm">
         <id property="id" column="id" javaType="int"/>
-        <result property="demping_factor" column="demping_factor"/>
-        <result property="limit_of_deflect" column="limit_of_deflect"/>
+        <result property="dempingFactor" column="demping_factor"/>
+        <result property="limitOfDeflect" column="limit_of_deflect"/>
         <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
                      select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
     </resultMap>
@@ -21,11 +21,11 @@
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.SettingsForAlgorythm">
         INSERT INTO settingforalgorythm (demping_factor, limit_of_deflect, user_id)
-        VALUES (#{demping_factor}, #{limit_of_deflect}, #{user.id})
+        VALUES (#{dempingFactor}, #{limitOfDeflect}, #{user.id})
     </insert>
 
     <update id="updateEntity" parameterType="com.solvd.page_rank.models.SettingsForAlgorythm">
-        UPDATE settingforalgorythm SET demping_factor = #{demping_factor}, limit_of_deflect = #{limit_of_deflect},
+        UPDATE settingforalgorythm SET demping_factor = #{dempingFactor}, limit_of_deflect = #{limitOfDeflect},
         user_id = #{user.id}
         WHERE id = #{id}
     </update>

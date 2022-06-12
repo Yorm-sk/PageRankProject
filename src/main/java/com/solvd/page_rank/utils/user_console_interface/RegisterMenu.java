@@ -1,8 +1,10 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
+import com.solvd.page_rank.dao.SettingsForAlgorythmDAO;
 import com.solvd.page_rank.dao.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongLoginException;
 import com.solvd.page_rank.exceptions.WrongPasswordException;
+import com.solvd.page_rank.models.SettingsForAlgorythm;
 import com.solvd.page_rank.models.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,6 +47,7 @@ public class RegisterMenu {
         }
         new UsersDAO().createEntity(user);
         user = new UsersDAO().getUserByLogin(user.getLogin());
+        new SettingsForAlgorythmDAO().createEntity(new SettingsForAlgorythm(0.85, 0.09, user));
         LOGGER.info("User registered");
         return user;
     }

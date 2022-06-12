@@ -36,7 +36,7 @@ public class MainMenu {
                         LOGGER.info("Thanks for using our program!");
                         break;
                 }
-                break;
+                if (choice == 3) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer...");
                 scan.next();
