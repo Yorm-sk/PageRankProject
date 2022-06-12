@@ -38,7 +38,8 @@ public class RegisterMenu {
                 if (!checkPassword(password)) throw new WrongPasswordException("Your password does`nt valid");
                 LOGGER.info("Enter password one more time");
                 String passwordForValidations = scanner.next();
-                if (!password.equals(passwordForValidations)) throw new WrongPasswordException("Your password does`nt same");
+                if (!password.equals(passwordForValidations))
+                    throw new WrongPasswordException("Your password does`nt same");
                 user.setPassword(password);
                 break;
             } catch (WrongPasswordException e) {
