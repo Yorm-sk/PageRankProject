@@ -11,15 +11,16 @@ import java.util.List;
 public class Converter {
 
     private List<String> siteNames = new ArrayList<>();
-    private  List<Site> sites = new ArrayList<>();
+    private List<Site> sites = new ArrayList<>();
     private AMWGraph graph;
-
-    public Converter() {}
+    public Converter() {
+    }
 
     public Converter(String[] args) {
-       siteNames = new ArrayList<>();
+        siteNames = new ArrayList<>();
         Collections.addAll(siteNames, args);
     }
+
     public Converter(ArrayList<String> pagesList) {
         siteNames = pagesList;
     }
@@ -34,8 +35,8 @@ public class Converter {
 
     public AMWGraph createGraphs() {
         AMWGraph graph = new AMWGraph(siteNames.size());
-        for(String sitename :siteNames) {
-            graph.insertVertex (sitename); // add node
+        for (String sitename : siteNames) {
+            graph.insertVertex(sitename); // add node
         }
         return graph;
     }
@@ -43,6 +44,7 @@ public class Converter {
     public AMWGraph getGraph() {
         return graph;
     }
+
     public void startCompareSites() {
         sites = new ArrayList<>();
         sites = JasonReader.getListOfSites(siteNames);
@@ -53,32 +55,31 @@ public class Converter {
         for (Site eachSite : sites) {
 
             int row = 0;
-          coll++;
-           for( String eachUrl : eachSite.getLinks() ) {
+            coll++;
+            for (String eachUrl : eachSite.getLinks()) {
 
-             row++;
+                row++;
 
-             int num = 0;
-               for ( Site eachCompareSite : sites) {
-                 num++;
-                   if(eachSite.getUrl().contentEquals(eachCompareSite.getUrl())) {
-                   }
-                   else if (eachUrl.contentEquals(eachCompareSite.getUrl())) {
-                      graph.insertConToMatrix(coll,num);
-                   }
-               }
-           }
+                int num = 0;
+                for (Site eachCompareSite : sites) {
+                    num++;
+                    if (eachSite.getUrl().contentEquals(eachCompareSite.getUrl())) {
+                    } else if (eachUrl.contentEquals(eachCompareSite.getUrl())) {
+                        graph.insertConToMatrix(coll, num);
+                    }
+                }
+            }
         }
-
-
     }
 
-    public void coutGraph() {
-        for (int c = 0; c<= getGraph().getNumOfVertex()-1; c++) {
+    /*public void coutGraph() {
+        for (int c = 0; c <= getGraph().getNumOfVertex() - 1; c++) {
             System.out.println();
-            for (int r = 0; r <= getGraph().getNumOfVertex()-1; r++) {
+            for (int r = 0; r <= getGraph().getNumOfVertex() - 1; r++) {
                 System.out.print(" " + getGraph().getElementOfMtrx(c, r));
             }
         }
     }
+
+     */
 }
