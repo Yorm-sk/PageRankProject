@@ -1,6 +1,7 @@
 package com.solvd.page_rank.dao;
 
 import com.solvd.page_rank.interfaces.IUsersDAO;
+import com.solvd.page_rank.models.PagesToRank;
 import com.solvd.page_rank.models.Users;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     @Override
     public List<Users> getAllEntity() {
         setMapper();
-        List<Users> users= mapper.getAllEntity();
+        List<Users> users = mapper.getAllEntity();
         closeSession();
         return users;
     }
@@ -60,5 +61,13 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
         Users user = mapper.getUserByLogin(login);
         closeSession();
         return user;
+    }
+
+    @Override
+    public List<PagesToRank> getAllPages() {
+        setMapper();
+        List<PagesToRank> pagesToRanks = mapper.getAllPages();
+        closeSession();
+        return pagesToRanks;
     }
 }
