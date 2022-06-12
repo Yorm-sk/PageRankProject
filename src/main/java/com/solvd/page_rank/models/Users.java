@@ -1,9 +1,12 @@
 package com.solvd.page_rank.models;
 
+import java.util.List;
+
 public class Users {
     private int id;
     private String login;
     private String password;
+    private List<PagesToRank> pagesToRanks;
 
     public Users() {
     }
@@ -17,6 +20,13 @@ public class Users {
         this.id = id;
         this.login = login;
         this.password = password;
+    }
+
+    public Users(int id, String login, String password, List<PagesToRank> pagesToRanks) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.pagesToRanks = pagesToRanks;
     }
 
     public int getId() {
@@ -43,13 +53,21 @@ public class Users {
         this.password = password;
     }
 
+    public List<PagesToRank> getPagesToRanks() {
+        return pagesToRanks;
+    }
+
+    public void setPagesToRanks(List<PagesToRank> pagesToRanks) {
+        this.pagesToRanks = pagesToRanks;
+    }
 
     @Override
     public String toString() {
-        return "Pages{" +
-                "id=" + id + "\n" +
-                "login=" + login + '\'' + "\n" +
-                "password=" + password +
+        return "User {" +
+                "id= " + getId() + "\n" +
+                "login= " + getLogin() + '\'' + "\n" +
+                "password= " + getPassword() +
+                "pages to ranks= " + getPagesToRanks() + "\n" +
                 '}';
     }
 }

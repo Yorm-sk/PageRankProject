@@ -1,10 +1,11 @@
 package com.solvd.page_rank.dao;
 
+import com.solvd.page_rank.interfaces.ISettingsForAlgorythmDAO;
 import com.solvd.page_rank.models.SettingsForAlgorythm;
 
 import java.util.List;
 
-public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO{
+public class SettingsForAlgorythmDAO extends AbstractDAO<ISettingsForAlgorythmDAO> implements ISettingsForAlgorythmDAO {
 
     @Override
     public SettingsForAlgorythm getEntity(int id) {
