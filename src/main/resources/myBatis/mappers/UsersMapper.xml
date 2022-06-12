@@ -35,4 +35,8 @@
         UPDATE users SET login = #{login}, password = #{password}
         WHERE id = #{id}
     </update>
+
+    <select id="getAllEntity" resultMap="usersResultMap">
+        SELECT * FROM users
+    </select>
 </mapper>

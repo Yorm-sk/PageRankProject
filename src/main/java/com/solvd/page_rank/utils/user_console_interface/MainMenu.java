@@ -10,35 +10,37 @@ import java.util.Scanner;
 public class MainMenu {
     private static final Logger LOGGER = LogManager.getLogger(MainMenu.class);
 
-    public MainMenu(){
-        try (Scanner scanner = new Scanner(System.in)){
+    public MainMenu() {
+        try (Scanner scanner = new Scanner(System.in)) {
             showMenu(scanner);
         }
     }
 
-    private void showMenu(Scanner scan){
-        LOGGER.info("\nHello user, select an option, please\n" +
-                "1 - sign in\n" +
-                "2 - register");
-        while (true){
+    private void showMenu(Scanner scan) {
+        while (true) {
             try {
-                LOGGER.info("\n1 - sign in\n" +
-                        "2 - register");
+                LOGGER.info("\nHello user, select an option, please\n" +
+                        "1 - sign in\n" +
+                        "2 - register\n" +
+                        "3 - exit");
                 int choice = scan.nextInt();
-                if (choice !=1 && choice != 2) throw new WrongNumberException();
-                switch (choice){
+                if (choice < 1 || choice > 3) throw new WrongNumberException();
+                switch (choice) {
                     case 1:
-                        //TODO: show menu to sign in
+                        new OptionMenu(scan, SignInMenu.signIn(scan));
                         break;
                     case 2:
-                        //TODO: show registration menu
+                        new OptionMenu(scan, RegisterMenu.register(scan));
+                        break;
+                    case 3:
+                        LOGGER.info("Thanks for using our program!");
                         break;
                 }
-                break;
-            } catch (InputMismatchException e){
+                if (choice == 3) break;
+            } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer...");
                 scan.next();
-            } catch (WrongNumberException e){
+            } catch (WrongNumberException e) {
                 LOGGER.warn("There is no such option");
             }
         }
