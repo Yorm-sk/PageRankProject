@@ -7,10 +7,20 @@
         <id property="id" column="id" javaType="int"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
+        <collection property="pagesToRanks" javaType="ArrayList" column="id"
+                    ofType="com.solvd.page_rank.models.PagesToRank" select="getPagesToRank"/>
     </resultMap>
 
     <select id="getEntity" resultMap="usersResultMap">
         SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="getUserByLogin" resultMap="usersResultMap">
+        SELECT * FROM users WHERE login = #{login}
+    </select>
+
+    <select id="getPagesToRank" resultMap="usersResultMap">
+        SELECT * FROM pagestorank WHERE user_id = #{id}
     </select>
 
     <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.Users">
@@ -18,7 +28,7 @@
     </delete>
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.Users">
-        INSERT INTO users (login) VALUES (#{login})
+        INSERT INTO users (login, password) VALUES (#{login}, #{password})
     </insert>
 
     <update id="updateEntity" parameterType="com.solvd.page_rank.models.Users">
