@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solvd.page_rank.dao.PagesDAO">
+<mapper namespace="com.solvd.page_rank.interfaces.IPagesDAO">
     <resultMap id="pagesResultMap" type="com.solvd.page_rank.models.Pages">
         <id property="id" column="id" javaType="int"/>
         <result property="url" column="url"/>
@@ -24,4 +24,8 @@
         UPDATE pages SET url = #{url}
         WHERE id = #{id}
     </update>
+
+    <select id="getAllEntity" resultMap="pagesResultMap">
+        SELECT * FROM pages
+    </select>
 </mapper>
