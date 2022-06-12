@@ -2,20 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solvd.page_rank.dao.UsersDAO">
+<mapper namespace="com.solvd.page_rank.interfaces.IUsersDAO">
     <resultMap id="usersResultMap" type="com.solvd.page_rank.models.Users">
         <id property="id" column="id" javaType="int"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
         <collection property="pagesToRanks" javaType="ArrayList" column="id"
-                    ofType="com.solvd.page_rank.models.PagesToRank" select="selectPagesToRanks"/>
+                    ofType="com.solvd.page_rank.models.PagesToRank" select="getAllPages"/>
     </resultMap>
 
     <select id="getEntity" resultMap="usersResultMap">
         SELECT * FROM users WHERE id = #{id}
     </select>
 
-    <select id="selectPagesToRanks" resultMap="usersResultMap">
+    <select id="getAllPages" resultMap="usersResultMap">
         SELECT * FROM pagestorank WHERE user_id = #{id}
     </select>
 
