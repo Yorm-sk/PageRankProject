@@ -1,5 +1,6 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
+import com.solvd.page_rank.dao.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongLoginException;
 import com.solvd.page_rank.exceptions.WrongPasswordException;
 import com.solvd.page_rank.models.Users;
@@ -42,7 +43,8 @@ public class RegisterMenu {
                 LOGGER.warn(e.getMessage());
             }
         }
-        //TODO:Add user to database and get it back
+        new UsersDAO().createEntity(user);
+        user = new UsersDAO().getUserByLogin(user.getLogin());
         LOGGER.info("User registered");
         return user;
     }
@@ -52,6 +54,6 @@ public class RegisterMenu {
     }
 
     private static boolean checkPassword(String password) {
-        return Pattern.matches("^((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\s+$))\\w{5,16}$", password);
+        return Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{5,16}$", password);
     }
 }

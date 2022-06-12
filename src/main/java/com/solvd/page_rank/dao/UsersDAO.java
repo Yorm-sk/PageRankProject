@@ -51,7 +51,7 @@ public class UsersDAO extends AbstractDAO<IUsersDAO> implements IUsersDAO{
     @Override
     public void setMapper() {
         openSession();
-        mapper = session.getMapper(IUsersDAO.class);
+        mapper = session.getMapper(com.solvd.page_rank.interfaces.IUsersDAO.class);
     }
 
     @Override

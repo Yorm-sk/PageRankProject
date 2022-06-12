@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solvd.page_rank.dao.UsersDAO">
+<mapper namespace="com.solvd.page_rank.interfaces.IUsersDAO">
     <resultMap id="usersResultMap" type="com.solvd.page_rank.models.Users">
         <id property="id" column="id" javaType="int"/>
         <result property="login" column="login"/>
@@ -22,7 +22,7 @@
     </insert>
 
     <update id="updateEntity" parameterType="com.solvd.page_rank.models.Users">
-        UPDATE users SET login = #{login}
+        UPDATE users SET login = #{login}, password = #{password}
         WHERE id = #{id}
     </update>
 </mapper>

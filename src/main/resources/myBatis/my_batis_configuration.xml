@@ -17,10 +17,10 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="PagesMapper.xml" />
-        <mapper resource="PagesToRankMapper.xml" />
-        <mapper resource="RelationsBetweenPagesMapper.xml" />
-        <mapper resource="SettingForAlgorythmMapper.xml" />
-        <mapper resource="UsersMapper.xml" />
+        <mapper resource="myBatis/mappers/PagesMapper.xml" />
+        <mapper resource="myBatis/mappers/PagesToRankMapper.xml" />
+        <mapper resource="myBatis/mappers/RelationsBetweenPagesMapper.xml" />
+        <mapper resource="myBatis/mappers/SettingForAlgorythmMapper.xml" />
+        <mapper resource="myBatis/mappers/UsersMapper.xml" />
     </mappers>
 </configuration>

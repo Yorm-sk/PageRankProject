@@ -1,10 +1,11 @@
 package com.solvd.page_rank.models;
 
+import java.util.List;
+
 public class Users {
     private int id;
     private String login;
     private String password;
-
     public Users() {
     }
 

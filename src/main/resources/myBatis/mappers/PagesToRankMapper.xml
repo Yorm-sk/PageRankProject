@@ -6,8 +6,8 @@
     <resultMap id="pagesToRankResultMap" type="com.solvd.page_rank.models.PagesToRank">
         <id property="id" column="id" javaType="int"/>
         <result property="rank" column="rank"/>
-        <association property="user" column="user_id" javaType="Users" select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
-        <association property="page" column="page_id" javaType="Page" select="com.solvd.page_rank.dao.PageDao.getEntity"/>
+        <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users" select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
+        <association property="page" column="page_id" javaType="com.solvd.page_rank.models.Pages" select="com.solvd.page_rank.dao.PageDao.getEntity"/>
     </resultMap>
 
     <select id="getEntity" resultMap="pagesToRankResultMap">
