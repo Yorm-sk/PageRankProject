@@ -8,5 +8,5 @@ import java.util.List;
 public interface IUsersDAO extends IBaseDAO<Users> {
     Users getUserByLogin(String login);
 
-    List<PagesToRank> getAllPages();
+    List<PagesToRank> getAllPages(int user_id);
 }
