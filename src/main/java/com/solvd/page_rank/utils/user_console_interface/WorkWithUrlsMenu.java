@@ -89,7 +89,7 @@ public class WorkWithUrlsMenu {
                 if (link.equals("stop")) {
                     break;
                 } else {
-                    if (!link.startsWith("https::\\\\")) throw new WrongLoginException("Url must start from https::\\\\");
+                    if (!link.startsWith("https:")) throw new WrongLoginException("Url must start from https:");
                     links.add(link);
                 }
             } catch (WrongLoginException e) {
