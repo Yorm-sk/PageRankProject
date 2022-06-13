@@ -108,7 +108,7 @@ public class OptionMenu {
                 resultForUser.append(url).append("- has page rank = ").append(page.getRank()).append("\n");
             }
             LOGGER.info(resultForUser);
-            JasonReader.writeToJSON(resultForUser.toString(), user);
+            new JasonReader().writeToJSON(resultForUser.toString(), user);
             LOGGER.info("json wrote");
         }
     }
