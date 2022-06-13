@@ -40,9 +40,8 @@ public class JasonReader {
     public static void writeToJSON(Site site, String siteName) {
 
         ObjectMapper om = new ObjectMapper();
-        PagesDAO dao = new PagesDAO();
-        List<Pages> pages = dao.getAllEntity();
-        File file = new File("src/main/resources/sites/site.json");
+
+        File file = new File("src/main/resources/sites/"+ siteName + ".json");
         if (!file.exists())
             try {
                 file.createNewFile();

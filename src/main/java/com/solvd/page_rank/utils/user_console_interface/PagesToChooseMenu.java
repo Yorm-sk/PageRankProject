@@ -45,7 +45,8 @@ public class PagesToChooseMenu {
             }
         }
         PagesToRankDAO rankDAO = new PagesToRankDAO();
-        for (Pages page: chosenOne){
+        for (PagesToRank pagesToRank : user.getPagesToRanks()) rankDAO.deleteEntity(pagesToRank.getId());
+        for (Pages page : chosenOne) {
             PagesToRank pageToRank = new PagesToRank(user, page);
             rankDAO.createEntity(pageToRank);
         }

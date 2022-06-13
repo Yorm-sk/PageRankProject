@@ -59,12 +59,12 @@ public class OptionMenu {
         }
     }
 
-    private void rankPages(Users user){
+    private void rankPages(Users user) {
         UsersDAO dao = new UsersDAO();
         SettingsForAlgorythmDAO settingsDao = new SettingsForAlgorythmDAO();
         user.setPagesToRanks(dao.getPagesToRank(user.getId()));
         List<Pages> pagesToParse = new ArrayList<>();
-        for (PagesToRank pageToRank : user.getPagesToRanks()){
+        for (PagesToRank pageToRank : user.getPagesToRanks()) {
             pagesToParse.add(pageToRank.getPage());
         }
 
