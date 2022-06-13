@@ -84,7 +84,7 @@ public class WorkWithUrlsMenu {
             try {
                 LOGGER.info("Enter links for site(enter stop, if there is no urls):");
                 String link = scanner.next();
-                if (link.equals("stop") && links.size() != 0)
+                if (link.equals("stop") && links.size() == 0)
                     throw new WrongLoginException("You must have at least one link");
                 if (link.equals("stop")) {
                     break;
