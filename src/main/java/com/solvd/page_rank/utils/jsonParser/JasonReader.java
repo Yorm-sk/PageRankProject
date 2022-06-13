@@ -38,7 +38,7 @@ public class JasonReader {
         return null;
     }
 
-    public static void writeToJSON(Site site, String siteName) {
+    public void writeToJSON(Site site, String siteName) {
 
         ObjectMapper om = new ObjectMapper();
 
@@ -55,8 +55,7 @@ public class JasonReader {
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
-
-    }
+   }
 
     public static void writeToJSON(String stringToWrite, Users user){
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
