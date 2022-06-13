@@ -1,0 +1,14 @@
+USE `pagerankdb`;
+INSERT INTO pages (url) VALUES ("site1");
+INSERT INTO pages (url) VALUES ("site2");
+INSERT INTO pages (url) VALUES ("site3");
+INSERT INTO pages (url) VALUES ("site4");
+INSERT INTO pages (url) VALUES ("site5");
+INSERT INTO users (login, password) VALUES ("Dima", "Dima123");
+INSERT INTO users (login, password) VALUES ("Marina", "Marina123");
+INSERT INTO users (login, password) VALUES ("Andriy", "Andriy123");
+INSERT INTO users (login, password) VALUES ("Sasha", "Sasha123");
+INSERT INTO `settingforalgorythm` (`demping_factor`, `limit_of_deflect`, user_id) VALUES (0.85, 0.09, 1);
+INSERT INTO `settingforalgorythm` (`demping_factor`, `limit_of_deflect`, user_id) VALUES (0.85, 0.09, 2);
+INSERT INTO `settingforalgorythm` (`demping_factor`, `limit_of_deflect`, user_id) VALUES (0.85, 0.09, 3);
+INSERT INTO `settingforalgorythm` (`demping_factor`, `limit_of_deflect`, user_id) VALUES (0.85, 0.09, 4);

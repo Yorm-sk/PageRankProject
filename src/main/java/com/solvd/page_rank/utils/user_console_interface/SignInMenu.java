@@ -17,10 +17,16 @@ public class SignInMenu {
     public static Users signIn(Scanner scan) {
         UsersDAO dao = new UsersDAO();
         Users user = new Users();
+        boolean exit = false;
         while (true) {
             try {
-                LOGGER.info("Enter your name please:");
+                LOGGER.info("Enter your name please(enter 'stop' if want exit to previous menu):");
                 String login = scan.next();
+                if (login.equals("stop")) {
+                    user = null;
+                    exit = true;
+                    break;
+                }
                 List<Users> users = dao.getAllEntity();
                 List<String> usersLogin;
                 usersLogin = users.stream().map(Users::getLogin).collect(Collectors.toList());
@@ -34,16 +40,17 @@ public class SignInMenu {
         }
         while (true) {
             try {
+                if (exit) break;
                 user = dao.getUserByLogin(user.getLogin());
                 LOGGER.info("Enter a password, please:");
                 String password = scan.next();
                 if (!password.equals(user.getPassword())) throw new WrongPasswordException();
+                LOGGER.info("User sign in");
                 break;
             } catch (WrongPasswordException e) {
                 LOGGER.warn(e.getMessage());
             }
         }
-        LOGGER.info("User sign in");
         return user;
     }
 }

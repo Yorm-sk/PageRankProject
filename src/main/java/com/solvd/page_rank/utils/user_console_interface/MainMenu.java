@@ -1,12 +1,12 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
 import com.solvd.page_rank.exceptions.WrongNumberException;
+import com.solvd.page_rank.models.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 
 public class MainMenu {
     private static final Logger LOGGER = LogManager.getLogger(MainMenu.class);
@@ -18,6 +18,7 @@ public class MainMenu {
     }
 
     private void showMenu(Scanner scan) {
+        Users user;
         while (true) {
             try {
                 LOGGER.info("\nHello user, select an option, please\n" +
@@ -28,10 +29,12 @@ public class MainMenu {
                 if (choice < 1 || choice > 3) throw new WrongNumberException();
                 switch (choice) {
                     case 1:
-                        new OptionMenu(scan, SignInMenu.signIn(scan));
+                        user = SignInMenu.signIn(scan);
+                        if (user != null) new OptionMenu(scan, user);
                         break;
                     case 2:
-                        new OptionMenu(scan, RegisterMenu.register(scan));
+                        user = RegisterMenu.register(scan);
+                        if (user != null) new OptionMenu(scan, user);
                         break;
                     case 3:
                         LOGGER.info("Thanks for using our program!");
