@@ -1,6 +1,11 @@
 package com.solvd.page_rank.utils.jsonParser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.solvd.page_rank.dao.PagesDAO;
+import com.solvd.page_rank.models.Pages;
+import com.solvd.page_rank.models.Users;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,15 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JasonReader {
+    private static final Logger LOGGER = LogManager.getLogger(JasonReader.class);
 
     static List<Site> sites;
 
     public static List<Site> getListOfSites(List<String> siteNames) {
         sites = new ArrayList<>();
 
-        for(String eachSite : siteNames)
-        sites.add(readFromJSON(eachSite));
-
+        for(String eachSite : siteNames) sites.add(readFromJSON(eachSite));
         return sites;
     }
 
@@ -34,35 +38,34 @@ public class JasonReader {
         return null;
     }
 
-    public static void writeToJSON() {
+    public static void writeToJSON(Site site, String siteName) {
 
-        Site site = new Site();
-        site.setUrl("fefefef.efefef");
-        List<String> links = new ArrayList<>();
-        links.add("sadsdas");
-        links.add("sadsdas");
-        links.add("sadsdas");
-
-        site.setRefs(links);
         ObjectMapper om = new ObjectMapper();
 
-        File file = new File("src/main/resources/sites/site.json");
+        File file = new File("src/main/resources/sites/"+ siteName + ".json");
         if (!file.exists())
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+               LOGGER.error("File does`nt exist!");
             }
 
         try {
             om.writeValue(file, site);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-
+            LOGGER.error(e.getMessage());
         }
 
+    }
+
+    public static void writeToJSON(String stringToWrite, Users user){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json"),
+                    stringToWrite);
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage());
+        }
     }
 
 }
