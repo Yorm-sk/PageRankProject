@@ -5,6 +5,8 @@ import com.solvd.page_rank.exceptions.NotEnoughPagesToRankException;
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import com.solvd.page_rank.models.Pages;
 import com.solvd.page_rank.models.Users;
+import com.solvd.page_rank.utils.convertToMatrix.Converter;
+import com.solvd.page_rank.utils.graphs.AMWGraph;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,6 +44,7 @@ public class PagesToChooseMenu {
                 LOGGER.warn(e.getMessage());
             }
         }
+        new Converter().getGraph().getMtrx();
         //TODO:parse chosenOne to PagesToRank and insert them into tables
     }
 }

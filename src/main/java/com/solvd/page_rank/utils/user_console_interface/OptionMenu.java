@@ -2,6 +2,7 @@ package com.solvd.page_rank.utils.user_console_interface;
 
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import com.solvd.page_rank.models.Users;
+import com.solvd.page_rank.utils.page_rank_algorythm.MyAlgorithm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

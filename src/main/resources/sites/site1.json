@@ -1,2 +1,6 @@
-{"url":"https://www.site1.com",
-  "links":["https://www.site2.com"]}
+{
+  "url": "https://www.site1.com",
+  "links": [
+    "https://www.site2.com"
+  ]
+}

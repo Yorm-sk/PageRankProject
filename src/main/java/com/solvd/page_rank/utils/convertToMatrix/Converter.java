@@ -72,7 +72,7 @@ public class Converter {
         }
     }
 
-    /*public void coutGraph() {
+    public void coutGraph() {
         for (int c = 0; c <= getGraph().getNumOfVertex() - 1; c++) {
             System.out.println();
             for (int r = 0; r <= getGraph().getNumOfVertex() - 1; r++) {
@@ -81,5 +81,5 @@ public class Converter {
         }
     }
 
-     */
+
 }
