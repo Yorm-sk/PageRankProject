@@ -84,9 +84,14 @@ public class WorkWithUrlsMenu {
             try {
                 LOGGER.info("Enter links for site(enter stop, if there is no urls):");
                 String link = scanner.next();
-                if (link.equals("stop") && links.size() != 0) break;
-                if (!link.startsWith("http")) throw new WrongLoginException("Url must start from http");
-                links.add(link);
+                if (link.equals("stop") && links.size() != 0)
+                    throw new WrongLoginException("You must have at least one link");
+                if (link.equals("stop")) {
+                    break;
+                } else {
+                    if (!link.startsWith("https::\\\\")) throw new WrongLoginException("Url must start from https::\\\\");
+                    links.add(link);
+                }
             } catch (WrongLoginException e) {
                 LOGGER.warn(e.getMessage());
             }
@@ -104,8 +109,10 @@ public class WorkWithUrlsMenu {
             try {
                 LOGGER.info("Chose site you want to remove (if uou don`t want to enter -1):");
                 pages.forEach(page -> LOGGER.info(page.getId() + ": " + page.getUrl()));
+                List<Integer> ids;
+                ids = dao.getAllEntity().stream().map(Pages::getId).collect(Collectors.toList());
                 int choice = scanner.nextInt();
-                if (choice < -1 || choice > pages.size() - 1) throw new WrongNumberException();
+                if (!ids.contains(choice)) throw new WrongNumberException();
                 if (choice == -1) break;
                 else {
                     LOGGER.info("Deleted site with id - " + choice);

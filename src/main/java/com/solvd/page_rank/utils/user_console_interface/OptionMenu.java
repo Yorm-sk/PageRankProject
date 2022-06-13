@@ -100,6 +100,7 @@ public class OptionMenu {
             String url = page.getPage().getUrl();
             resultForUser.append(url).append("- has page rank = ").append(page.getRank()).append("\n");
         }
+        LOGGER.info(resultForUser);
         JasonReader.writeToJSON(resultForUser.toString(), user);
     }
 }
