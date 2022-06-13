@@ -3,12 +3,15 @@ package com.solvd.page_rank.utils.convertToMatrix;
 import com.solvd.page_rank.utils.graphs.AMWGraph;
 import com.solvd.page_rank.utils.jsonParser.JasonReader;
 import com.solvd.page_rank.utils.jsonParser.Site;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Converter {
+    private static final Logger LOGGER = LogManager.getLogger(Converter.class);
 
     private List<String> siteNames = new ArrayList<>();
     private List<Site> sites = new ArrayList<>();
@@ -21,7 +24,7 @@ public class Converter {
         Collections.addAll(siteNames, args);
     }
 
-    public Converter(ArrayList<String> pagesList) {
+    public Converter(List<String> pagesList) {
         siteNames = pagesList;
     }
 
@@ -72,14 +75,15 @@ public class Converter {
         }
     }
 
-    /*public void coutGraph() {
+    public void logGraph() {
         for (int c = 0; c <= getGraph().getNumOfVertex() - 1; c++) {
             System.out.println();
+            LOGGER.info("\"\\n\"");
             for (int r = 0; r <= getGraph().getNumOfVertex() - 1; r++) {
-                System.out.print(" " + getGraph().getElementOfMtrx(c, r));
+                LOGGER.info(" " + getGraph().getElementOfMtrx(c, r));
             }
         }
     }
 
-     */
+
 }
