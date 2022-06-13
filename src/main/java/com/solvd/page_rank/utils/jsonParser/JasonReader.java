@@ -61,8 +61,8 @@ public class JasonReader {
     public void writeToJSON(String stringToWrite, Users user){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json"),
-                    stringToWrite);
+            File file = new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json");
+            objectMapper.writeValue(file, stringToWrite);
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
