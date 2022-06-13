@@ -1,11 +1,11 @@
 package com.solvd.page_rank.utils.jsonParser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.solvd.page_rank.dao.PagesDAO;
-import com.solvd.page_rank.models.Pages;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.solvd.page_rank.models.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,10 +59,18 @@ public class JasonReader {
     }
 
     public static void writeToJSON(String stringToWrite, Users user){
-        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json"),
-                    stringToWrite);
+            String lines[] = stringToWrite.split("\\r?\\n");
+            JSONObject jsonObject = new JSONObject();
+            JSONObject tempjsonObject = new JSONObject();
+            jsonObject.put("title", lines[0]);
+            for (int i = 1; i < lines.length; i++) {
+                tempjsonObject.put("rank" + i, lines[i]);
+            }
+            jsonObject.put("ranks", tempjsonObject);
+            objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin() + ".json"),
+                    jsonObject);
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
