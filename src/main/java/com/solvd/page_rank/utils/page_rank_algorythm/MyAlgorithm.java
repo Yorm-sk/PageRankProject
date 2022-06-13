@@ -11,18 +11,15 @@ public class MyAlgorithm {
 
     private int[][] relations; //contain information about links between sites
     private double[] pageRank;
-    double[] previousPageRank;
+    private double[] previousPageRank;
+    private double dampingFactor = 0.85;
+    private double limitOfDefect = 0.09; // needed to reduce deflection on each iteration
 
-    public void calculatePageRank(int sitesQuantity, Scanner scanner) {
-        relations = new int[sitesQuantity][sitesQuantity];
+    public void calculatePageRank(int sitesQuantity) {
         pageRank = new double[sitesQuantity];
-        setRelations(sitesQuantity, scanner);
         previousPageRank = new double[sitesQuantity];
         Arrays.fill(pageRank, (double) 1 / sitesQuantity); //on first iteration all sites has same rank
 
-        double dampingFactor = 0.85;
-
-        double limitOfDefect = 0.09; // needed to reduce deflection on each iteration
         previousPageRank = Arrays.copyOf(pageRank, pageRank.length);
         iteratePageRank(dampingFactor, sitesQuantity);
         for (int i = 0; i < pageRank.length; i++) {
@@ -115,8 +112,20 @@ public class MyAlgorithm {
         }
     }
 
+    public void setDampingFactor(double dampingFactor) {
+        this.dampingFactor = dampingFactor;
+    }
+
+    public void setLimitOfDefect(double limitOfDefect) {
+        this.limitOfDefect = limitOfDefect;
+    }
+
     public double[] getPageRank() {
         return pageRank;
+    }
+
+    public void setRelations(int[][] relations) {
+        this.relations = relations;
     }
 
     public void showPageRank() {
@@ -125,30 +134,5 @@ public class MyAlgorithm {
 
     public void showPageRelations() {
         LOGGER.info("\n" + Arrays.deepToString(relations).replace("],", "],\n"));
-    }
-
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            int sitesQuantity;
-            while (true) {
-                try {
-                    LOGGER.info("Enter amount of sites:");
-                    sitesQuantity = scanner.nextInt();
-                    if (sitesQuantity < 1 || sitesQuantity > 20) throw new WrongNumberException();
-                    break;
-
-                } catch (InputMismatchException e) {
-                    LOGGER.warn("You entered not a number or not integer");
-                    scanner.next();
-                } catch (WrongNumberException e) {
-                    LOGGER.warn(e.getMessage());
-                }
-            }
-            MyAlgorithm algorithm = new MyAlgorithm();
-            algorithm.calculatePageRank(sitesQuantity, scanner);
-            algorithm.showPageRelations();
-            algorithm.showPageRank();
-            LOGGER.info(algorithm.sumOfRanks());
-        }
     }
 }

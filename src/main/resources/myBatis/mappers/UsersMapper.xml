@@ -10,6 +10,14 @@
         <collection property="pagesToRanks" javaType="ArrayList" column="id"
                     ofType="com.solvd.page_rank.models.PagesToRank" select="getPagesToRank"/>
     </resultMap>
+    <resultMap id="pagesToRankResultMap" type="com.solvd.page_rank.models.PagesToRank">
+        <id property="id" column="id" javaType="int"/>
+        <result property="rank" javaType="double" column="rank"/>
+        <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
+                     select="com.solvd.page_rank.interfaces.IUsersDAO.getEntity"/>
+        <association property="page" column="page_id" javaType="com.solvd.page_rank.models.Pages"
+                     select="com.solvd.page_rank.interfaces.IPagesToRankDAO.getEntity"/>
+    </resultMap>
 
     <select id="getEntity" resultMap="usersResultMap">
         SELECT * FROM users WHERE id = #{id}
@@ -19,8 +27,8 @@
         SELECT * FROM users WHERE login = #{login}
     </select>
 
-    <select id="getPagesToRank" resultMap="usersResultMap">
-        SELECT * FROM pagestorank WHERE user_id = #{id}
+    <select id="getPagesToRank" parameterType="int" resultMap="pagesToRankResultMap">
+        SELECT * FROM pagestorank WHERE user_id = #{user_id}
     </select>
 
     <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.Users">

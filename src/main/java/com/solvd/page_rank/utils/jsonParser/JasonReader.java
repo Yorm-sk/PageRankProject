@@ -19,9 +19,7 @@ public class JasonReader {
     public static List<Site> getListOfSites(List<String> siteNames) {
         sites = new ArrayList<>();
 
-        for(String eachSite : siteNames)
-        sites.add(readFromJSON(eachSite));
-
+        for(String eachSite : siteNames) sites.add(readFromJSON(eachSite));
         return sites;
     }
 

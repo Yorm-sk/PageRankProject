@@ -5,7 +5,7 @@
 <mapper namespace="com.solvd.page_rank.interfaces.IPagesToRankDAO">
     <resultMap id="pagesToRankResultMap" type="com.solvd.page_rank.models.PagesToRank">
         <id property="id" column="id" javaType="int"/>
-        <result property="rank" column="rank"/>
+        <result property="rank" javaType="double" column="rank"/>
         <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
                      select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
         <association property="page" column="page_id" javaType="com.solvd.page_rank.models.Pages"
@@ -21,7 +21,7 @@
     </delete>
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.PagesToRank">
-        INSERT INTO pagestorank (rank, user_id, page_id) VALUES (#{rank}, #{user.id}, , #{page.id})
+        INSERT INTO pagestorank (user_id, page_id, `rank`) VALUES (#{user.id}, #{page.id}, #{rank})
     </insert>
 
     <update id="updateEntity" parameterType="com.solvd.page_rank.models.PagesToRank">

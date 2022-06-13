@@ -1,13 +1,20 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
+import com.solvd.page_rank.dao.PagesToRankDAO;
+import com.solvd.page_rank.dao.SettingsForAlgorythmDAO;
+import com.solvd.page_rank.dao.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongNumberException;
+import com.solvd.page_rank.models.Pages;
+import com.solvd.page_rank.models.PagesToRank;
+import com.solvd.page_rank.models.SettingsForAlgorythm;
 import com.solvd.page_rank.models.Users;
+import com.solvd.page_rank.utils.convertToMatrix.Converter;
 import com.solvd.page_rank.utils.page_rank_algorythm.MyAlgorithm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class OptionMenu {
     private static final Logger LOGGER = LogManager.getLogger(OptionMenu.class);
@@ -35,7 +42,7 @@ public class OptionMenu {
                         new PagesToChooseMenu(scanner, user);
                         break;
                     case 3:
-                        //TODO:start algorithm
+                        rankPages(user);
                         break;
                     case 4:
                         new WorkWithSettingMenu(scanner, user.getId());
@@ -50,5 +57,29 @@ public class OptionMenu {
                 LOGGER.warn(e.getMessage());
             }
         }
+    }
+
+    private void rankPages(Users user){
+        UsersDAO dao = new UsersDAO();
+        SettingsForAlgorythmDAO settingsDao = new SettingsForAlgorythmDAO();
+        user.setPagesToRanks(dao.getPagesToRank(user.getId()));
+        List<Pages> pagesToParse = new ArrayList<>();
+        for (PagesToRank pageToRank : user.getPagesToRanks()){
+            pagesToParse.add(pageToRank.getPage());
+        }
+
+        List<String> usersPagesUrls;
+        usersPagesUrls = pagesToParse.stream().map(Pages::getUrl).collect(Collectors.toList());
+        Converter converter = new Converter(usersPagesUrls);
+        converter.startCompareSites();    // needs to have .json files
+        LOGGER.info(Arrays.deepToString(converter.getGraph().getMtrx()));   // return int[][] - connection table of Pages and links
+
+        MyAlgorithm algorithm = new MyAlgorithm();
+        algorithm.setRelations(converter.getGraph().getMtrx());
+        SettingsForAlgorythm settings = settingsDao.getSettingsByUserID(user.getId());
+        algorithm.setDampingFactor(settings.getDempingFactor());
+        algorithm.setLimitOfDefect(settings.getLimitOfDeflect());
+        algorithm.calculatePageRank(pagesToParse.size());
+        algorithm.showPageRank();
     }
 }

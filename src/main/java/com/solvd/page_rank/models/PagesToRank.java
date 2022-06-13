@@ -9,10 +9,9 @@ public class PagesToRank {
     public PagesToRank() {
     }
 
-    public PagesToRank(Users user, Pages page, double rank) {
+    public PagesToRank(Users user, Pages page) {
         this.user = user;
         this.page = page;
-        this.rank = rank;
     }
 
     public PagesToRank(int id, Users user, Pages page, double rank) {
