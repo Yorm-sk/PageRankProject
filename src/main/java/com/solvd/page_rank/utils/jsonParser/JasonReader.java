@@ -38,7 +38,7 @@ public class JasonReader {
         return null;
     }
 
-    public static void writeToJSON(Site site, String siteName) {
+    public void writeToJSON(Site site, String siteName) {
 
         ObjectMapper om = new ObjectMapper();
 
@@ -58,7 +58,7 @@ public class JasonReader {
 
     }
 
-    public static void writeToJSON(String stringToWrite, Users user){
+    public void writeToJSON(String stringToWrite, Users user){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json"),

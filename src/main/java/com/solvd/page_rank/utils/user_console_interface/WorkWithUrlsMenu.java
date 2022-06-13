@@ -72,7 +72,7 @@ public class WorkWithUrlsMenu {
             try {
                 LOGGER.info("Enter url of site:");
                 String url = scanner.next();
-                if (!url.startsWith("http")) throw new WrongLoginException("Url must start from http");
+                if (!url.startsWith("https:\\")) throw new WrongLoginException("Url must start from https:\\");
                 site.setUrl(url);
                 break;
             } catch (WrongLoginException e) {
@@ -97,24 +97,25 @@ public class WorkWithUrlsMenu {
             }
         }
         site.setRefs(links);
-        JasonReader.writeToJSON(site, name);
+        new JasonReader().writeToJSON(site, name);
         dao.createEntity(new Pages(name));
         LOGGER.info("Site added");
     }
 
     private void removeSite(Scanner scanner) {
         PagesDAO dao = new PagesDAO();
-        List<Pages> pages = dao.getAllEntity();
+        List<Pages> pages;
         while (true) {
             try {
                 LOGGER.info("Chose site you want to remove (if uou don`t want to enter -1):");
+                pages = dao.getAllEntity();
                 pages.forEach(page -> LOGGER.info(page.getId() + ": " + page.getUrl()));
                 List<Integer> ids;
                 ids = dao.getAllEntity().stream().map(Pages::getId).collect(Collectors.toList());
                 int choice = scanner.nextInt();
-                if (!ids.contains(choice)) throw new WrongNumberException();
                 if (choice == -1) break;
                 else {
+                    if (!ids.contains(choice)) throw new WrongNumberException();
                     LOGGER.info("Deleted site with id - " + choice);
                     dao.deleteEntity(choice);
                 }
