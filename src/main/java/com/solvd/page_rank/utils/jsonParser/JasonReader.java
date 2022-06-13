@@ -3,6 +3,7 @@ package com.solvd.page_rank.utils.jsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solvd.page_rank.dao.PagesDAO;
 import com.solvd.page_rank.models.Pages;
+import com.solvd.page_rank.models.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,6 +56,16 @@ public class JasonReader {
             LOGGER.error(e.getMessage());
         }
 
+    }
+
+    public static void writeToJSON(String stringToWrite, Users user){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("src/main/resources/resultOfAlgorithm/" + user.getLogin()+".json"),
+                    stringToWrite);
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage());
+        }
     }
 
 }

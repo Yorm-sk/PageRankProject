@@ -1,5 +1,7 @@
 package com.solvd.page_rank.models;
 
+import java.util.Objects;
+
 public class PagesToRank {
     private int id;
     private Users user;
@@ -54,6 +56,13 @@ public class PagesToRank {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PagesToRank that = (PagesToRank) o;
+        return Double.compare(that.rank, rank) == 0;
+    }
 
     @Override
     public String toString() {

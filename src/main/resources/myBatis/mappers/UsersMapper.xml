@@ -16,7 +16,7 @@
         <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
                      select="com.solvd.page_rank.interfaces.IUsersDAO.getEntity"/>
         <association property="page" column="page_id" javaType="com.solvd.page_rank.models.Pages"
-                     select="com.solvd.page_rank.interfaces.IPagesToRankDAO.getEntity"/>
+                     select="com.solvd.page_rank.interfaces.IPagesDAO.getEntity"/>
     </resultMap>
 
     <select id="getEntity" resultMap="usersResultMap">
