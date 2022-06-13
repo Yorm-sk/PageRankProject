@@ -60,47 +60,56 @@ public class OptionMenu {
         }
     }
 
-    private void rankPages(Users user){
+    private void rankPages(Users user) {
         //Read pages to rank from dao
         UsersDAO dao = new UsersDAO();
+        boolean exit = true;
         SettingsForAlgorythmDAO settingsDao = new SettingsForAlgorythmDAO();
         user.setPagesToRanks(dao.getPagesToRank(user.getId()));
-        List<Pages> pagesToParse = new ArrayList<>();
-        for (PagesToRank pageToRank : user.getPagesToRanks()){
-            pagesToParse.add(pageToRank.getPage());
+        if (user.getPagesToRanks().isEmpty()) {
+            LOGGER.info("You must choose pages first");
+            exit = false;
         }
 
-        //parse list to array
-        List<String> usersPagesUrls;
-        usersPagesUrls = pagesToParse.stream().map(Pages::getUrl).collect(Collectors.toList());
-        Converter converter = new Converter(usersPagesUrls);
-        converter.startCompareSites();    // needs to have .json files
+        if (exit) {
+            List<Pages> pagesToParse = new ArrayList<>();
+            for (PagesToRank pageToRank : user.getPagesToRanks()) {
+                pagesToParse.add(pageToRank.getPage());
+            }
 
-        //calculating page rank
-        MyAlgorithm algorithm = new MyAlgorithm();
-        algorithm.setRelations(converter.getGraph().getMtrx());
-        SettingsForAlgorythm settings = settingsDao.getSettingsByUserID(user.getId());
-        algorithm.setDampingFactor(settings.getDempingFactor());
-        algorithm.setLimitOfDefect(settings.getLimitOfDeflect());
-        algorithm.calculatePageRank(pagesToParse.size());
+            //parse list to array
+            List<String> usersPagesUrls;
+            usersPagesUrls = pagesToParse.stream().map(Pages::getUrl).collect(Collectors.toList());
+            Converter converter = new Converter(usersPagesUrls);
+            converter.startCompareSites();    // needs to have .json files
 
-        //update dao (insert page rank)
-        for (PagesToRank page: user.getPagesToRanks()){
-            page.setRank(algorithm.getPageRank()[user.getPagesToRanks().indexOf(page)]);
-        }
-        PagesToRankDAO rankDAO = new PagesToRankDAO();
-        for (PagesToRank page: user.getPagesToRanks()){
-            rankDAO.updateEntity(page);
-        }
+            //calculating page rank
+            MyAlgorithm algorithm = new MyAlgorithm();
+            algorithm.setRelations(converter.getGraph().getMtrx());
+            SettingsForAlgorythm settings = settingsDao.getSettingsByUserID(user.getId());
+            algorithm.setDampingFactor(settings.getDempingFactor());
+            algorithm.setLimitOfDefect(settings.getLimitOfDeflect());
+            algorithm.calculatePageRank(pagesToParse.size());
 
-        //writing file with page ranks
-        StringBuilder resultForUser = new StringBuilder();
-        resultForUser.append("Page rank for user with login ").append(user.getLogin()).append(":\n");
-        for (PagesToRank page: user.getPagesToRanks()){
-            String url = page.getPage().getUrl();
-            resultForUser.append(url).append("- has page rank = ").append(page.getRank()).append("\n");
+            //update dao (insert page rank)
+            for (PagesToRank page : user.getPagesToRanks()) {
+                page.setRank(algorithm.getPageRank()[user.getPagesToRanks().indexOf(page)]);
+            }
+            PagesToRankDAO rankDAO = new PagesToRankDAO();
+            for (PagesToRank page : user.getPagesToRanks()) {
+                rankDAO.updateEntity(page);
+            }
+
+            //writing file with page ranks
+            StringBuilder resultForUser = new StringBuilder();
+            resultForUser.append("Page rank for user with login ").append(user.getLogin()).append(":\n");
+            for (PagesToRank page : user.getPagesToRanks()) {
+                String url = page.getPage().getUrl();
+                resultForUser.append(url).append("- has page rank = ").append(page.getRank()).append("\n");
+            }
+            LOGGER.info(resultForUser);
+            JasonReader.writeToJSON(resultForUser.toString(), user);
+            LOGGER.info("json wrote");
         }
-        LOGGER.info(resultForUser);
-        JasonReader.writeToJSON(resultForUser.toString(), user);
     }
 }
