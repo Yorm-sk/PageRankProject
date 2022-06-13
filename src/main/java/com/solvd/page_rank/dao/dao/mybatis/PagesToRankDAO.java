@@ -1,6 +1,6 @@
-package com.solvd.page_rank.dao;
+package com.solvd.page_rank.dao.dao.mybatis;
 
-import com.solvd.page_rank.interfaces.IPagesToRankDAO;
+import com.solvd.page_rank.dao.IPagesToRankDAO;
 import com.solvd.page_rank.models.PagesToRank;
 
 import java.util.List;

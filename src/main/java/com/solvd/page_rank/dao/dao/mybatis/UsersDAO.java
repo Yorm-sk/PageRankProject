@@ -1,6 +1,7 @@
-package com.solvd.page_rank.dao;
+package com.solvd.page_rank.dao.dao.mybatis;
 
-import com.solvd.page_rank.interfaces.IUsersDAO;
+import com.solvd.page_rank.dao.IUsersDAO;
+import com.solvd.page_rank.dao.dao.mybatis.AbstractDAO;
 import com.solvd.page_rank.models.PagesToRank;
 import com.solvd.page_rank.models.Users;
 

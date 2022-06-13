@@ -1,9 +1,7 @@
-package com.solvd.page_rank.dao;
+package com.solvd.page_rank.dao.dao.mybatis;
 
-import com.solvd.page_rank.interfaces.IRelationsBetweenPagesDAO;
-import com.solvd.page_rank.models.PagesToRank;
+import com.solvd.page_rank.dao.IRelationsBetweenPagesDAO;
 import com.solvd.page_rank.models.RelationsBetweenPages;
-import com.solvd.page_rank.models.Users;
 
 import java.util.List;
 
