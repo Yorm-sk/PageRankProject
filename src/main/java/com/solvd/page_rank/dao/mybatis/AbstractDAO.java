@@ -1,4 +1,4 @@
-package com.solvd.page_rank.dao;
+package com.solvd.page_rank.dao.mybatis;
 
 import com.solvd.page_rank.myBatis.MyBatisSQLFactory;
 import org.apache.ibatis.session.SqlSession;

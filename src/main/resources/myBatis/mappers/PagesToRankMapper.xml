@@ -2,29 +2,29 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solvd.page_rank.interfaces.IPagesToRankDAO">
-    <resultMap id="pagesToRankResultMap" type="com.solvd.page_rank.models.PagesToRank">
+<mapper namespace="com.solvd.page_rank.dao.IPagesToRankDAO">
+    <resultMap id="pagesToRankResultMap" type="PagesToRank">
         <id property="id" column="id" javaType="int"/>
         <result property="rank" javaType="double" column="rank"/>
-        <association property="user" column="user_id" javaType="com.solvd.page_rank.models.Users"
-                     select="com.solvd.page_rank.dao.UsersDao.getEntity"/>
-        <association property="page" column="page_id" javaType="com.solvd.page_rank.models.Pages"
-                     select="com.solvd.page_rank.dao.PageDao.getEntity"/>
+        <association property="user" column="user_id" javaType="Users"
+                     select="com.solvd.page_rank.dao.IUsersDAO.getEntity"/>
+        <association property="page" column="page_id" javaType="Pages"
+                     select="com.solvd.page_rank.dao.IPagesDAO.getEntity"/>
     </resultMap>
 
     <select id="getEntity" resultMap="pagesToRankResultMap">
         SELECT * FROM pagestorank WHERE id = #{id}
     </select>
 
-    <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.PagesToRank">
+    <delete id="deleteEntity" parameterType="PagesToRank">
         DELETE FROM pagestorank WHERE id = #{id}
     </delete>
 
-    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.PagesToRank">
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="PagesToRank">
         INSERT INTO pagestorank (user_id, page_id, `rank`) VALUES (#{user.id}, #{page.id}, #{rank})
     </insert>
 
-    <update id="updateEntity" parameterType="com.solvd.page_rank.models.PagesToRank">
+    <update id="updateEntity" parameterType="PagesToRank">
         UPDATE pagestorank SET `rank` = #{rank}, user_id = #{user.id}, page_id = #{page.id}
         WHERE id = #{id}
     </update>

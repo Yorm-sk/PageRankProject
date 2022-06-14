@@ -1,6 +1,6 @@
-package com.solvd.page_rank.dao;
+package com.solvd.page_rank.dao.mybatis;
 
-import com.solvd.page_rank.interfaces.ISettingsForAlgorythmDAO;
+import com.solvd.page_rank.dao.ISettingsForAlgorythmDAO;
 import com.solvd.page_rank.models.SettingsForAlgorythm;
 
 import java.util.List;

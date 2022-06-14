@@ -1,7 +1,7 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
-import com.solvd.page_rank.dao.PagesDAO;
-import com.solvd.page_rank.dao.PagesToRankDAO;
+import com.solvd.page_rank.dao.mybatis.PagesDAO;
+import com.solvd.page_rank.dao.mybatis.PagesToRankDAO;
 import com.solvd.page_rank.exceptions.NotEnoughPagesToRankException;
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import com.solvd.page_rank.models.Pages;

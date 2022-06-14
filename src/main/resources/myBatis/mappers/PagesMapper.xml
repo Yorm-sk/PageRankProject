@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solvd.page_rank.interfaces.IPagesDAO">
-    <resultMap id="pagesResultMap" type="com.solvd.page_rank.models.Pages">
+<mapper namespace="com.solvd.page_rank.dao.IPagesDAO">
+    <resultMap id="pagesResultMap" type="Pages">
         <id property="id" column="id" javaType="int"/>
         <result property="url" column="url"/>
     </resultMap>
@@ -12,15 +12,15 @@
         SELECT * FROM pages WHERE id = #{id}
     </select>
 
-    <delete id="deleteEntity" parameterType="com.solvd.page_rank.models.Pages">
+    <delete id="deleteEntity" parameterType="Pages">
         DELETE FROM pages WHERE id = #{id}
     </delete>
 
-    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.page_rank.models.Pages">
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="Pages">
         INSERT INTO pages (url) VALUES (#{url})
     </insert>
 
-    <update id="updateEntity" parameterType="com.solvd.page_rank.models.Pages">
+    <update id="updateEntity" parameterType="Pages">
         UPDATE pages SET url = #{url}
         WHERE id = #{id}
     </update>
