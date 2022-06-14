@@ -1,4 +1,4 @@
-package com.solvd.page_rank.dao.dao.mybatis;
+package com.solvd.page_rank.dao.mybatis;
 
 import com.solvd.page_rank.dao.IRelationsBetweenPagesDAO;
 import com.solvd.page_rank.models.RelationsBetweenPages;

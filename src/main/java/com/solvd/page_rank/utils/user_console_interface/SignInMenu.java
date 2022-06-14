@@ -1,6 +1,6 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
-import com.solvd.page_rank.dao.dao.mybatis.UsersDAO;
+import com.solvd.page_rank.dao.mybatis.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongLoginException;
 import com.solvd.page_rank.exceptions.WrongPasswordException;
 import com.solvd.page_rank.models.Users;
