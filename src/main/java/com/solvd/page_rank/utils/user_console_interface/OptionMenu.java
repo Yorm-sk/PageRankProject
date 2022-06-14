@@ -1,8 +1,8 @@
 package com.solvd.page_rank.utils.user_console_interface;
 
-import com.solvd.page_rank.dao.PagesToRankDAO;
-import com.solvd.page_rank.dao.SettingsForAlgorythmDAO;
-import com.solvd.page_rank.dao.UsersDAO;
+import com.solvd.page_rank.dao.mybatis.PagesToRankDAO;
+import com.solvd.page_rank.dao.mybatis.SettingsForAlgorythmDAO;
+import com.solvd.page_rank.dao.mybatis.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import com.solvd.page_rank.models.Pages;
 import com.solvd.page_rank.models.PagesToRank;
