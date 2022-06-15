@@ -60,9 +60,7 @@ public class Converter {
             int row = 0;
             coll++;
             for (String eachUrl : eachSite.getLinks()) {
-
                 row++;
-
                 int num = 0;
                 for (Site eachCompareSite : sites) {
                     num++;
