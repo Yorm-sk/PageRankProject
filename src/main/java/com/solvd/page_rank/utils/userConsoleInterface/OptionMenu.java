@@ -54,6 +54,7 @@ public class OptionMenu {
                 if (choice == 5) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You entered not a number");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }

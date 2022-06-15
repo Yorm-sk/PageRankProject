@@ -39,6 +39,7 @@ public class WorkWithSettingMenu {
                 if (choice == 3) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You entered not a number");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }

@@ -45,6 +45,7 @@ public class WorkWithUrlsMenu {
                 if (choice == 3) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
@@ -121,6 +122,7 @@ public class WorkWithUrlsMenu {
                 }
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
