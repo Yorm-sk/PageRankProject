@@ -61,5 +61,13 @@ public class Users {
         this.pagesToRanks = pagesToRanks;
     }
 
-
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", pagesToRanks=" + pagesToRanks +
+                '}';
+    }
 }
