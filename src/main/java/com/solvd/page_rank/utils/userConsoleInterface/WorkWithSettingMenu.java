@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.user_console_interface;
+package com.solvd.page_rank.utils.userConsoleInterface;
 
 import com.solvd.page_rank.dao.mybatis.SettingsForAlgorythmDAO;
 import com.solvd.page_rank.exceptions.WrongNumberException;

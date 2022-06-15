@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.page_rank_algorythm;
+package com.solvd.page_rank.utils.pageRankAlgorythm;
 
 import com.solvd.page_rank.exceptions.WrongNumberException;
 import org.apache.logging.log4j.LogManager;
