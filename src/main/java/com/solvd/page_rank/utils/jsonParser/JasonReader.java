@@ -60,7 +60,7 @@ public class JasonReader {
     public static void writeToJSON(String stringToWrite, Users user){
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            String lines[] = stringToWrite.split("\\r?\\n");
+            String[] lines = stringToWrite.split("\\r?\\n");
             JSONObject jsonObject = new JSONObject();
             JSONObject tempjsonObject = new JSONObject();
             jsonObject.put("title", lines[0]);

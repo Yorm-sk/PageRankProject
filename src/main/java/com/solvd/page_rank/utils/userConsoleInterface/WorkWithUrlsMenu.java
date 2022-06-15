@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.user_console_interface;
+package com.solvd.page_rank.utils.userConsoleInterface;
 
 import com.solvd.page_rank.dao.mybatis.PagesDAO;
 import com.solvd.page_rank.exceptions.WrongLoginException;
@@ -45,6 +45,7 @@ public class WorkWithUrlsMenu {
                 if (choice == 3) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
@@ -72,7 +73,7 @@ public class WorkWithUrlsMenu {
             try {
                 LOGGER.info("Enter url of site:");
                 String url = scanner.next();
-                if (!url.startsWith("https:\\")) throw new WrongLoginException("Url must start from https:\\");
+                if (!url.startsWith("https://")) throw new WrongLoginException("Url must start from https://");
                 site.setUrl(url);
                 break;
             } catch (WrongLoginException e) {
@@ -89,7 +90,7 @@ public class WorkWithUrlsMenu {
                 if (link.equals("stop")) {
                     break;
                 } else {
-                    if (!link.startsWith("https:\\")) throw new WrongLoginException("Url must start from https:\\");
+                    if (!link.startsWith("https://")) throw new WrongLoginException("Url must start from https://");
                     links.add(link);
                 }
             } catch (WrongLoginException e) {
@@ -121,6 +122,7 @@ public class WorkWithUrlsMenu {
                 }
             } catch (InputMismatchException e) {
                 LOGGER.warn("You enter not an integer");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }

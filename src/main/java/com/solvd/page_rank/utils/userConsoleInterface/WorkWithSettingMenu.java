@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.user_console_interface;
+package com.solvd.page_rank.utils.userConsoleInterface;
 
 import com.solvd.page_rank.dao.mybatis.SettingsForAlgorythmDAO;
 import com.solvd.page_rank.exceptions.WrongNumberException;
@@ -39,6 +39,7 @@ public class WorkWithSettingMenu {
                 if (choice == 3) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You entered not a number");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }

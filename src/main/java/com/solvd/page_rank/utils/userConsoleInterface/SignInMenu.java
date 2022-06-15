@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.user_console_interface;
+package com.solvd.page_rank.utils.userConsoleInterface;
 
 import com.solvd.page_rank.dao.mybatis.UsersDAO;
 import com.solvd.page_rank.exceptions.WrongLoginException;

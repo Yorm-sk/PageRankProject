@@ -1,4 +1,4 @@
-package com.solvd.page_rank.utils.user_console_interface;
+package com.solvd.page_rank.utils.userConsoleInterface;
 
 import com.solvd.page_rank.dao.mybatis.PagesToRankDAO;
 import com.solvd.page_rank.dao.mybatis.SettingsForAlgorythmDAO;
@@ -10,7 +10,7 @@ import com.solvd.page_rank.models.SettingsForAlgorythm;
 import com.solvd.page_rank.models.Users;
 import com.solvd.page_rank.utils.convertToMatrix.Converter;
 import com.solvd.page_rank.utils.jsonParser.JasonReader;
-import com.solvd.page_rank.utils.page_rank_algorythm.MyAlgorithm;
+import com.solvd.page_rank.utils.pageRankAlgorythm.MyAlgorithm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,6 +54,7 @@ public class OptionMenu {
                 if (choice == 5) break;
             } catch (InputMismatchException e) {
                 LOGGER.warn("You entered not a number");
+                scanner.next();
             } catch (WrongNumberException e) {
                 LOGGER.warn(e.getMessage());
             }
